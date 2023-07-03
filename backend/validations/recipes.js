@@ -5,6 +5,10 @@ const handleValidationErrors = require('./handleValidationErrors');
 
 
 const validateRecipeInput = [
+    check('name')
+        .exists({checkFalsy: true}),
+        handleValidationErrors,
+
     check('ingredients')
         .exists({checkFalsy: true}),
         handleValidationErrors,
@@ -17,7 +21,7 @@ const validateRecipeInput = [
         .exists({ checkFalsy: true })
         .isNumeric(),   // auto fill from vs code to ensure step is a number.
         handleValidationErrors,  // since recipes will be coming from chat no custom error messages?
-    
+
     check('description')
         .exists({ checkFalsy: true }),
         handleValidationErrors, // no max length.
