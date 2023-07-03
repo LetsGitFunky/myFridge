@@ -15,14 +15,18 @@ const userSchema = new Schema(
             type: String,
             required: true,
         }, //fridge is an array of ObjectIds, each of which references an Ingredient
-        fridge: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ingredient',
-        }],//savedRecipes is an array of ObjectIds, each of which references a Recipe
-        savedRecipes: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Recipe',
-        }]
+        fridge: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Ingredient",
+            },
+        ], //savedRecipes is an array of ObjectIds, each of which references a Recipe
+        savedRecipes: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Recipe",
+            },
+        ],
     },
     {
         timestamps: true,
