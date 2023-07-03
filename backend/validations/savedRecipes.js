@@ -1,20 +1,18 @@
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { check } = require("express-validator");
+const handleValidationErrors = require('./handleValidationErrors');
 
-const savedRecipeSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    recipes: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Recipe',
-        }
-    ]
-}, {
-    timestamps: true
-});
 
-module.exports = mongoose.model('SavedRecipe', savedRecipeSchema);
+const validateSavedRecipeInput = [
+    check('name')
+        .exists({checkFalsy: true})
+        .notEmpty(),
+        handleValidationErrors,
+
+    check('recipes')
+        .exists({checkFalsy: true})
+        .isArray({min: 1}),
+        handleValidationErrors,
+];
+
+module.exports = validateSavedRecipeInput;
