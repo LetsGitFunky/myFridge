@@ -17,7 +17,7 @@ const userSchema = new Schema(
         }, //fridge is an array of ObjectIds, each of which references an Ingredient
         fridge: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ingredients',
+            ref: 'Ingredient',
         }],//savedRecipes is an array of ObjectIds, each of which references a Recipe
         savedRecipes: [{
             type: mongoose.Schema.Types.ObjectId,
