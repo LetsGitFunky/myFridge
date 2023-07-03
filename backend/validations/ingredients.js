@@ -1,4 +1,4 @@
-// validations/recipes.js
+// validations/ingredients.js
 
 const { check } = require("express-validator");
 const handleValidationErrors = require('./handleValidationErrors');
