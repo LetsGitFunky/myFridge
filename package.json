@@ -1,7 +1,7 @@
 {
-  "name": "mern-twitter",
+  "name": "my-fridge",
   "version": "1.0.0",
-  "description": "Twitter Clone",
+  "description": "myFridge",
   "scripts": {
     "backend-install": "npm install --prefix backend",
     "backend": "npm run dev --prefix backend",
