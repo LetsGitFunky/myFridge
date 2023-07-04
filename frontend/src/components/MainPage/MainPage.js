@@ -5,7 +5,6 @@
 function MainPage() {
     return (
         <>
-            {/* <RecipeGeneratorForm /> */}
             <p>A Twitter Clone</p>
             <footer>
             Copyright &copy; 2022 Chirper

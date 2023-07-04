@@ -13,6 +13,7 @@ import SignupForm from './components/SessionForms/SignupForm';
 import Tweets from './components/Tweets/Tweets';
 import Profile from './components/Profile/Profile';
 import TweetCompose from './components/Tweets/TweetCompose';
+import RecipeGeneratorForm from './components/RecipeGeneratorForm/RecipeGeneratorForm';
 
 import { getCurrentUser } from './store/session';
 
@@ -26,6 +27,7 @@ function App() {
   return loaded && (
     <>
       <NavBar />
+      <RecipeGeneratorForm />
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
         <AuthRoute exact path="/login" component={LoginForm} />

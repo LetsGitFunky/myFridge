@@ -2,11 +2,14 @@
 
 import React from "react";
 import { useState } from "react";
-import { generateRecipe } from "../../../../backend/services/openaiService";
+// import { generateRecipe } from "../../../../backend/services/openaiService";
+import { useDispatch } from "react-redux";
+import { fetchRecipes } from "../../store/recipes";
 
 const RecipeGeneratorForm = () => {
     //store ingredients entered in the form
     const [ingredients, setIngredients] = useState("");
+    const dispatch = useDispatch();
 
     // updates the ingredients state variable as the user types in the input field
     const handleInputChange = (e) => {
@@ -18,12 +21,12 @@ const RecipeGeneratorForm = () => {
         event.preventDefault();
     
         try {
-            const recipe = await generateRecipe(ingredients);
-            // Do something with the generated recipe
-            // console.log for now for testing
-                console.log(recipe);
+          // Generate recipe using openaiService
+            // const recipes = await generateRecipe(ingredients);
+          // Dispatch fetchRecipes action with generated recipe
+            dispatch(fetchRecipes(ingredients));
         } catch (error) {
-            console.error('Error generating recipe:', error);
+            console.error("Error generating recipe:", error);
         }
     };
 
