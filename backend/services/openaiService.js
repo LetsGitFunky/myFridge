@@ -1,23 +1,29 @@
 const axios = require("axios");
 
 const openai = axios.create({
-    baseURL: "https://api.openai.com/v1/",
-    timeout: 5000,
+    baseURL: "https://api.openai.com",
+    timeout: 10000,
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
     },
+});
+
+exports.generateRecipe = async (ingredients) => {
+    const messages = [
+        {role: "system", content: "You are a helpful assistant."},
+        {role: "user", content: `Given the following ingredients: ${ingredients.join(", ")},
+        please generate a recipe in JSON format with keys for 'name',
+        'ingredients' as an array of ingredient names,
+        'instructions' as an array of steps with 'step' and 'description'.`}
+    ];
+
+    const response = await openai.post('/v1/chat/completions', {
+        model: "gpt-3.5-turbo",
+        messages,
+        max_tokens: 400,
+        n: 3,
     });
 
-    exports.generateRecipe = async (ingredients) => {
-    const prompt = `Given the following ingredients: ${ingredients.join(", ")}, generate a recipe.`;
-
-    const response = await openai.post('/engines/davinci-codex/completions', {
-        prompt,
-        max_tokens: 200,
-    });
-
-    return response.data.choices[0].text;
+    return response.data.choices.map(choice => JSON.parse(choice.message.content));
 };
-
-
