@@ -5,8 +5,8 @@ const userSchema = new Schema(
     {
         username: {
             type: String,
-            required: true,
-            unique: true, // make sure its unique
+            required: true, 
+            //  there can be many chefs with the same username
         },
         email: {
             type: String,
