@@ -1,3 +1,4 @@
+import jwtFetch from './jwt';
 
 // action constants
 export const RECEIVE_RECIPES = "recipes/RECEIVE_RECIPES";
@@ -35,7 +36,7 @@ export const getSavedRecipes = (state) => {
 
 export const fetchRecipes = ingredients => async dispatch => {
     try {
-        const response = await fetch('/api/recipes/generate', {
+        const response = await jwtFetch('/api/recipes/generate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -69,4 +70,3 @@ export default function recipesReducer(state = {}, action) {
             return state;
     }
 }
-
