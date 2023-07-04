@@ -23,5 +23,8 @@
   "homepage": "https://github.com/hannadarwish/mern-twitter#readme",
   "engines": {
     "node": "16.20.0"
+  },
+  "dependencies": {
+    "openai": "^3.3.0"
   }
 }
