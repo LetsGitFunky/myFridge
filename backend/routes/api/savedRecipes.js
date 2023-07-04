@@ -41,7 +41,7 @@ router.post('/api/savedRecipes', requireUser, validateSavedRecipeInput, async (r
         const newSavedRecipe = new SavedRecipe({
             user: req.params.userId,
             name: req.recipe.name,
-            recipes: req.recipe
+            recipe: req.recipe
         });
 
         let savedRecipe = await newSavedRecipe.save();

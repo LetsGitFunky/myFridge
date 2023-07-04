@@ -11,7 +11,7 @@ const savedRecipeSchema = new Schema({
         type: String,
         required: true
     },
-    recipes: [
+    recipe: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Recipe',
