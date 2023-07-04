@@ -15,8 +15,13 @@ const savedRecipeSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: 'Recipe',
+            required: true
         }
-    ]
+    ],
+    note: {
+        type: Schema.Types.ObjectId,
+        ref: 'Note'
+    }
 }, {
     timestamps: true
 });
