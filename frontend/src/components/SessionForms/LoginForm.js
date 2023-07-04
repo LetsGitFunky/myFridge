@@ -30,7 +30,7 @@ function LoginForm () {
 
     return (
         <form className="session-form" onSubmit={handleSubmit}>
-            <h2>Log In Form</h2>
+            <h2>Log in to myFridge</h2>
             <div className="errors">{errors?.email}</div>
             <label>
                 <span>Email</span>
