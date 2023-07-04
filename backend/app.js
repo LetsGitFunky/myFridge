@@ -8,16 +8,25 @@ const cors = require('cors');
 const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
+const app = express();
+
 require('./models/User');
 // require('./models/Tweet');
-require('./config/passport'); 
-const passport = require('passport'); 
+require('./config/passport');
+const passport = require('passport');
 
 const usersRouter = require('./routes/api/users');
 // const tweetsRouter = require('./routes/api/tweets');
 const csrfRouter = require('./routes/api/csrf');
+const recipeRoutes = require('./routes/api/recipes') // added for recipe/generate testing
 
-const app = express();
+
+// app.listen(5000, () => {
+//     console.log('Server is running on port 5000');
+// });
+
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -50,6 +59,7 @@ app.use(
 app.use('/api/users', usersRouter);
 // app.use('/api/tweets', tweetsRouter);
 app.use('/api/csrf', csrfRouter);
+app.use('/api/recipes', recipeRoutes);
 
 // Express custom middleware for catching all unmatched requests and formatting
 // a 404 error to be sent as the response.
