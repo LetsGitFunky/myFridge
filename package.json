@@ -1,7 +1,8 @@
 {
-  "name": "my-fridge",
+  "name": "myfridge",
   "version": "1.0.0",
-  "description": "myFridge",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "backend-install": "npm install --prefix backend",
     "backend": "npm run dev --prefix backend",
@@ -12,19 +13,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hannadarwish/mern-twitter.git"
+    "url": "git+https://github.com/LetsGitFunky/myFridge.git"
   },
   "keywords": [],
-  "author": "Hanna Darwish",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hannadarwish/mern-twitter/issues"
+    "url": "https://github.com/LetsGitFunky/myFridge/issues"
   },
-  "homepage": "https://github.com/hannadarwish/mern-twitter#readme",
   "engines": {
-    "node": "16.20.0"
+    "node": "v16.20.0"
   },
-  "dependencies": {
-    "openai": "^3.3.0"
-  }
+  "homepage": "https://github.com/LetsGitFunky/myFridge#readme"
 }
