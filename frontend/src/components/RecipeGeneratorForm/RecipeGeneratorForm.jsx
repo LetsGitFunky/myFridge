@@ -3,13 +3,15 @@
 import React from "react";
 import { useState } from "react";
 // import { generateRecipe } from "../../../../backend/services/openaiService";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchRecipes } from "../../store/recipes";
+import { useHistory } from "react-router-dom"
 
 const RecipeGeneratorForm = () => {
     //store ingredients entered in the form
     const [ingredients, setIngredients] = useState("");
     const dispatch = useDispatch();
+    const history = useHistory() // this is for after submit
 
     // updates the ingredients state variable as the user types in the input field
     const handleInputChange = (e) => {
@@ -25,10 +27,12 @@ const RecipeGeneratorForm = () => {
             // const recipes = await generateRecipe(ingredients);
           // Dispatch fetchRecipes action with generated recipe
             dispatch(fetchRecipes(ingredients));
+            history.push('/recipes') // redirect them to the recipes pages once submitted 
         } catch (error) {
             console.error("Error generating recipe:", error);
         }
     };
+
 
     return (
         <div>
