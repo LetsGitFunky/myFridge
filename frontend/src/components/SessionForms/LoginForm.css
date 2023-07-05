@@ -4,8 +4,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid #FFFACD;
-    box-shadow: 0 0 5px #FFFACD;
+    border: 10px solid #FFFACD;
+    box-shadow: 0 0 10px #FFFACD;
+    border-radius: 40px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
@@ -70,7 +71,13 @@ form input::placeholder {
     height: auto;
 }
 
-.session-form input[type="submit"] {
+.login-button-container {
+    display: flex;
+    gap: 10px;
+    max-height: 70px;
+}
+
+.session-form input[type="submit"], #login-demo-button {
     background-color: #87CEEB;
     color: white;
     border: none;
@@ -82,8 +89,16 @@ form input::placeholder {
     margin-top: 20px;
 }
 
+#login-demo-button {
+    background-color: #78e6cc;
+}
+
 .session-form input[type="submit"]:hover {
     background-color: #6495ED;
+}
+
+#login-demo-button:hover {
+    background-color: #00ac84;
 }
 
 .chef-img-container {

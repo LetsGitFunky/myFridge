@@ -29,6 +29,18 @@ function LoginForm () {
         dispatch(login({ email, password })); 
     }
 
+    const handleLoginDemo = (e) => {
+        e.preventDefault();
+
+        const demoEmail = 'demo@user.io';
+        const demoPassword = 'password';
+        
+        setEmail(demoEmail);
+        setPassword(demoPassword);
+        dispatch(login({ email: demoEmail, password: demoPassword }));
+        
+    }
+
     return (
         <div className='form-container'>
             <form className="session-form" onSubmit={handleSubmit}>
@@ -58,11 +70,14 @@ function LoginForm () {
                     />
                 </label>
                 <br/>
-                <input
-                    type="submit"
-                    value="Log In"
-                    disabled={!email || !password}
-                />
+                <div className='login-button-container'>
+                    <button onClick={handleLoginDemo} id="login-demo-button" type="submit">Demo User</button>
+                    <input
+                        type="submit"
+                        value="Log In"
+                        disabled={!email || !password}
+                    />
+                </div>
             </form>
             <div className='signup-fridge-img-container'>
                 <img src={bluefridge} />
