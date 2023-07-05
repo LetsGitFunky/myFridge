@@ -15,7 +15,7 @@ exports.generateRecipe = async (ingredients) => {
         {role: "user", content: `Given the following ingredients: ${ingredients},
         please generate a recipe in JSON format with keys for 'name',
         'ingredients' as an array of ingredient names,
-        'instructions' as an array of steps with 'step' and 'description'.`}
+        'instructions' as an array of steps with 'step' (as an integer) and 'description'.`}
     ];
 
     const response = await openai.post('/v1/chat/completions', {
