@@ -3,6 +3,7 @@ import jwtFetch from './jwt';
 // action constants
 export const RECEIVE_INGREDIENTS = "ingredients/RECEIVE_INGREDIENTS";
 export const RECEIVE_INGREDIENT = "ingredients/RECEIVE_INGREDIENT";
+export const REMOVE_INGREDIENT = 'ingredients/REMOVE_INGREDIENT';
 
 // action creators
 const receiveIngredients = (ingredients) => {
@@ -19,6 +20,11 @@ const receiveIngredient = (ingredient) => {
     }
 }
 
+const removeIngredient = ingredientId => ({
+    type: REMOVE_INGREDIENT,
+    ingredientId
+});
+
 //getingredients and getingredient selector helper functions
 export const getIngredient = (ingredientId) => (state) => (
     state.ingredients ? state.ingredients[ingredientId] : null
@@ -31,7 +37,7 @@ export const getIngredients = (state) => (
 
 // thunk action creators
 
-export const fetchingredients = ingredients => async dispatch => {
+export const fetchIngredients = ingredients => async dispatch => {
     try {
         const response = await jwtFetch('/api/ingredients', {
             method: 'POST',
@@ -50,19 +56,32 @@ export const fetchingredients = ingredients => async dispatch => {
     }
 };
 
+export const deleteIngredient = ingredientId => async (dispatch) => {
+    const response = await csrfFetch (`/api/ingredients/${ingredientId}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        dispatch(removeIngredient(ingredientId));
+    }
+};
+
 
 //ingredient Reducer
 export default function ingredientsReducer(state = {}, action) {
-    let newState;
+    let nextState;
 
     switch (action.type) {
         case RECEIVE_INGREDIENTS:
             return action.ingredients;
         case RECEIVE_INGREDIENT:
-            newState = {...state};
+            nextState = {...state};
             const ingredientId = action.ingredient.id;
-            newState[ingredientId] = action.ingredient;
-            return newState;
+            nextState[ingredientId] = action.ingredient;
+            return nextState;
+        case REMOVE_INGREDIENT:
+            delete nextState[action.ingredientId];
+            return nextState;
         default:
             return state;
     }
