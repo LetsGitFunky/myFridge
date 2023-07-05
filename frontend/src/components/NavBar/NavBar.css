@@ -1,8 +1,8 @@
 
 .navbar {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ccc;
     box-sizing: border-box;
     height: 50px;
     left: 0;
@@ -11,39 +11,96 @@
     top: 0;
     z-index: 500;
     padding-bottom: 60px;
-    background-color: white;
+    background-color: #c7f3e4;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+#myfridge-text {
+    color: #87CEEB;
+    -webkit-text-stroke: 0.1px #6495ED;
+    margin-left: 20px;
+    margin-top: 80px;
 }
 
 .links-nav, .links-auth {
-    margin-top: 20px;
+    margin-top: 70px;
     display: flex;
     gap: 5px;
-    float: right;
-    position: relative;
     right: auto;
     top: auto;
-    box-sizing: border-box;
-    font-family: 'Libre Franklin', sans-serif;
+    font-size: 20px;
 }
 
-.nav-buttons {
-    border-radius: 20px;
-    border: 1px solid #e33d26;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 16px;
-    padding-bottom: 15px;
+.nav-button {
+    display: inline-block;
+    padding: 8px 12px;
     margin-bottom: 10px;
-    margin-right: 20px;
-    background-color: #e33d26;
-    font-family: 'Libre Franklin', sans-serif;
+    margin-right: 10px;
+    background-color: #87CEEB;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Itim', cursive;
+    color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid #6495ED
+}
+
+.nav-button:hover {
+    background-color: #6495ED;
+}
+
+.nav-button:focus {
+    outline: none;
+}
+
+.links-nav a,
+.links-auth a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #87CEEB;
     font-weight: bold;
     font-size: 15px;
     color: white;
     text-decoration: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 20px;
     transition: background-color 0.3s ease;
+}
+
+.links-nav a:hover,
+.links-auth a:hover {
+    background-color: #6495ED;
+}
+
+.chef-icon {
+    height: 45px;
+    width: auto; 
+    margin-left: 10px; 
+    margin-top: 60px;
+}
+
+#tagline-nav {
+    margin-top: 60px;
+    margin-left: 10px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    color: #00ac84;
 }

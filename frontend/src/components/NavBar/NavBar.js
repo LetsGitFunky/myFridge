@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { logout } from '../../store/session';
 import { NavLink } from 'react-router-dom/';
+import cheficon from './Images/cheficon.png'
 
 function NavBar () {
     const loggedIn = useSelector(state => !!state.session.user);
@@ -18,25 +19,31 @@ function NavBar () {
         if (loggedIn) {
             return (
                 <div className="links-nav">
-                    <NavLink id="saved-navbutton" exact to={'/saved'}>Saved Recipes</NavLink>
-                    <NavLink id="myfridge-navbutton" exact to={'/'}>myFridge</NavLink>
-                    <button className="nav-buttons" onClick={logoutUser}>Logout</button>
+                    <NavLink className="nav-button" exact to={'/'}>myFridge</NavLink>
+                    <NavLink className="nav-button" exact to={'/saved'}>Saved Recipes</NavLink>
+                    <button className="nav-button" id="logout-button" onClick={logoutUser}>Logout</button>
                 </div>
             );
         } else {
             return (
                 <div className="links-auth">
-                    <NavLink exact to={'/signup'}>Signup</NavLink>
-                    <NavLink exact to={'/login'}>Login</NavLink>
+                    <NavLink className="nav-button" exact to={'/signup'}>Signup</NavLink>
+                    <NavLink className="nav-button" exact to={'/login'}>Login</NavLink>
                 </div>
             );
         }
     }
 
     return (
-        <div className = "navbar">
-            <h1>myFridge</h1>
-            { getLinks() }
+        <div className="navbar">
+            <div className="left-section">
+                <h1 id="myfridge-text">myFridge</h1>
+                <img className="chef-icon" src={cheficon} alt="Chef Icon" />
+                <span id="tagline-nav">Your quick and easy recipe generator!</span>
+            </div>
+            <div className="right-section">
+                {getLinks()}
+            </div>
         </div>
     );
 }

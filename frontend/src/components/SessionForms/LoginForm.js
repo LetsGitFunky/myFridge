@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './SessionForm.css';
+import './LoginForm.css';
+import bluefridge from './Images/bluefridge.jpg'
 
 import { login, clearSessionErrors } from '../../store/session';
 
@@ -29,32 +30,44 @@ function LoginForm () {
     }
 
     return (
-        <form className="session-form" onSubmit={handleSubmit}>
-            <h2>Log in to myFridge</h2>
-            <div className="errors">{errors?.email}</div>
-            <label>
-                <span>Email</span>
-                <input type="text"
-                    value={email}
-                    onChange={update('email')}
-                    placeholder="Email"
+        <div className='form-container'>
+            <form className="session-form" onSubmit={handleSubmit}>
+                <div className='chef-img-container'>
+                        <img src="https://png.pngtree.com/png-clipart/20230218/original/pngtree-cartoon-chef-with-a-confident-pose-png-image_8958326.png"/>
+                </div>
+                <h2 id="login-title-text">Log in to myFridge</h2>
+                <p>Let's get cookin'!</p>
+                <div className="errors">{errors?.email}</div>
+                <label id="login-email">
+                    <span>Email</span>
+                    <br/>
+                    <input type="text"
+                        value={email}
+                        onChange={update('email')}
+                        placeholder="Email"
+                    />
+                </label>
+                <div className="errors">{errors?.password}</div>
+                <label>
+                    <span>Password</span>
+                    <br/>
+                    <input type="password"
+                        value={password}
+                        onChange={update('password')}
+                        placeholder="Password"
+                    />
+                </label>
+                <br/>
+                <input
+                    type="submit"
+                    value="Log In"
+                    disabled={!email || !password}
                 />
-            </label>
-            <div className="errors">{errors?.password}</div>
-            <label>
-                <span>Password</span>
-                <input type="password"
-                    value={password}
-                    onChange={update('password')}
-                    placeholder="Password"
-                />
-            </label>
-            <input
-                type="submit"
-                value="Log In"
-                disabled={!email || !password}
-            />
-        </form>
+            </form>
+            <div className='signup-fridge-img-container'>
+                <img src={bluefridge} />
+            </div>
+        </div>
     );
 }
 
