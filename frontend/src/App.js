@@ -14,6 +14,7 @@ import RecipeShow from './components/RecipeShow/RecipeShow';
 import GeneratedRecipes from './components/GeneratedRecipes/GeneratedRecipes';
 import SavedRecipesIndex from './components/SavedRecipesIndex/SavedRecipesIndex';
 import { getCurrentUser } from './store/session';
+import RecipeGeneratorForm from './components/RecipeGeneratorForm/RecipeGeneratorForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
