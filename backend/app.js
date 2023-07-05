@@ -11,12 +11,10 @@ const { isProduction } = require('./config/keys');
 const app = express();
 
 require('./models/User');
-// require('./models/Tweet');
 require('./config/passport');
 const passport = require('passport');
 
 const usersRouter = require('./routes/api/users');
-// const tweetsRouter = require('./routes/api/tweets');
 const csrfRouter = require('./routes/api/csrf');
 const recipeRoutes = require('./routes/api/recipes') // added for recipe/generate testing
 const ingredientRouter = require('./routes/api/ingredients') // for ingredients
@@ -58,7 +56,6 @@ app.use(
 
 // Attach Express routers
 app.use('/api/users', usersRouter);
-// app.use('/api/tweets', tweetsRouter);
 app.use('/api/csrf', csrfRouter);
 app.use('/api/recipes', recipeRoutes);
 app.use('/api/ingredients', ingredientRouter)

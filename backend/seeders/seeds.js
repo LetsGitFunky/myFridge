@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
-const Tweet = require('../models/Tweet');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
 
 const NUM_SEED_USERS = 10;
-const NUM_SEED_TWEETS = 30;
 
 // Create users
 const users = [];
@@ -31,17 +29,6 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
     )
 }
 
-// Create tweets
-const tweets = [];
-
-for (let i = 0; i < NUM_SEED_TWEETS; i++) {
-    tweets.push(
-        new Tweet ({
-            text: faker.hacker.phrase(),
-            author: users[Math.floor(Math.random() * NUM_SEED_USERS)]._id
-    })
-    )
-}
 
 // Connect to database
 mongoose
@@ -57,12 +44,9 @@ mongoose
 
 
     const insertSeeds = () => {
-        console.log("Resetting db and seeding users and tweets...");
-    
+
         User.collection.drop()
-                        .then(() => Tweet.collection.drop())
                         .then(() => User.insertMany(users))
-                        .then(() => Tweet.insertMany(tweets))
                         .then(() => {
                             console.log("Done!");
                             mongoose.disconnect();
