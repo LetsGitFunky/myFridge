@@ -26,5 +26,7 @@
   },
   "dependencies": {
     "openai": "^3.3.0"
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {}
 }
