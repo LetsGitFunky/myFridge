@@ -5,9 +5,9 @@
 function MainPage() {
     return (
         <>
-            <p>A Twitter Clone</p>
+            {/* <RecipeGeneratorForm /> */}
             <footer>
-            Copyright &copy; 2022 Chirper
+            Copyright &copy; 2023 myFridge
             </footer>
         </>
     );
