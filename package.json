@@ -3,18 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "asynckit": "^0.4.0",
-    "axios": "^0.26.1",
-    "combined-stream": "^1.0.8",
-    "delayed-stream": "^1.0.0",
-    "mime-db": "^1.52.0",
-    "mime-types": "^2.1.35",
-    "follow-redirects": "^1.15.2",
-    "openai": "^3.3.0",
-    "form-data": "^4.0.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "backend-install": "npm install --prefix backend",
     "backend": "npm run dev --prefix backend",
@@ -32,6 +20,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LetsGitFunky/myFridge/issues"
+  },
+  "engines": {
+    "node": "v16.20.0"
   },
   "homepage": "https://github.com/LetsGitFunky/myFridge#readme"
 }
