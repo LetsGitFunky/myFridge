@@ -12,7 +12,7 @@ const openai = axios.create({
 exports.generateRecipe = async (ingredients) => {
     const messages = [
         {role: "system", content: "You are a helpful assistant."},
-        {role: "user", content: `Given the following ingredients: ${ingredients.join(", ")},
+        {role: "user", content: `Given the following ingredients: ${ingredients},
         please generate a recipe in JSON format with keys for 'name',
         'ingredients' as an array of ingredient names,
         'instructions' as an array of steps with 'step' and 'description'.`}
