@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { fetchIngredients } from "../../store/ingredients";
-import { useDispatch } from "react-redux";
+import { fetchIngredients, getIngredients } from "../../store/ingredients";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Fridge () {
+    const sessionIngredients = [...useSelector(getIngredients)]
+
     const [ingredients, setIngredients] = useState("")
     const dispatch = useDispatch();
 
@@ -21,7 +23,8 @@ export default function Fridge () {
 
     return (
         <div className="fridge-wrapper">
-            <form className="add-to-fridge-form" onSubmit={handleSubmit}>
+            <div className="add-to-fridge-form-wrapper">
+                <form className="add-to-fridge-form" onSubmit={handleSubmit}>
                 <label className="add-ingredients-fridge-label">Ingredients:</label>
                 <input
                     type="text"
@@ -32,6 +35,14 @@ export default function Fridge () {
                 />
                 <button className="add-to-fridge-button" type="submit">Add to myFridge!</button>
             </form>
+            <div className="ingredients-list-wrapper">
+                <ul className="fridge-ingredients-list">
+                    {sessionIngredients.map(ing => {
+                        <li>{ing}</li>
+                    })}
+                </ul>
+            </div>
+            </div>
         </div>
     )
 }
