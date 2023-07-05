@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './SessionForm.css';
+import './SignupForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import bluefridge from './Images/bluefridge.jpg'
 
 function SignupForm () {
     const [email, setEmail] = useState('');
@@ -52,52 +53,67 @@ function SignupForm () {
     }
 
     return (
-        <form className="session-form" onSubmit={handleSubmit}>
-            <h2>Sign up for myFridge </h2>
-            <div className="errors">{errors?.email}</div>
-            <label>
-                <span>Email</span>
-                <input type="text"
-                    value={email}
-                    onChange={update('email')}
-                    placeholder="Email"
+        <div className='form-container'>
+            <form className="session-form" onSubmit={handleSubmit}>
+                <div className='chef-img-container'>
+                        <img src="https://png.pngtree.com/png-clipart/20230218/original/pngtree-cartoon-chef-with-a-confident-pose-png-image_8958326.png"/>
+                </div>
+                <h2 id="signup-title-text">Sign up for myFridge </h2>
+                <p>Your quick and easy recipe generator!</p>
+                <div className="errors">{errors?.email}</div>
+                <label id="signup-email">
+                    <span>Email</span>
+                    <br/>
+                    <input type="text"
+                        value={email}
+                        onChange={update('email')}
+                        placeholder="Email"
+                    />
+                </label>
+                <br/>
+                <div className="errors">{errors?.username}</div>
+                <label id="chef-name">
+                    <span>Chef Name</span>
+                    <br/>
+                    <input type="text"
+                        value={username}
+                        onChange={update('username')}
+                        placeholder="Your name"
+                    />
+                </label>
+                <div className="errors">{errors?.password}</div>
+                <label>
+                    <span>Password</span>
+                    <br/>
+                    <input type="password"
+                        value={password}
+                        onChange={update('password')}
+                        placeholder="Password"
+                    />
+                </label>
+                <div className="errors">
+                    {password !== password2 && 'Confirm Password field must match'}
+                </div>
+                <label>
+                    <span>Confirm Password</span>
+                    <br/>
+                    <input type="password"
+                        value={password2}
+                        onChange={update('password2')}
+                        placeholder="Confirm Password"
+                    />
+                </label>
+                <br/>
+                <input
+                    type="submit"
+                    value="Sign Up"
+                    disabled={!email || !username || !password || password !== password2}
                 />
-            </label>
-            <div className="errors">{errors?.username}</div>
-            <label>
-                <span>Chef Name</span>
-                <input type="text"
-                    value={username}
-                    onChange={update('username')}
-                    placeholder="Your name"
-                />
-            </label>
-            <div className="errors">{errors?.password}</div>
-            <label>
-                <span>Password</span>
-                <input type="password"
-                    value={password}
-                    onChange={update('password')}
-                    placeholder="Password"
-                />
-            </label>
-            <div className="errors">
-                {password !== password2 && 'Confirm Password field must match'}
+            </form>
+            <div className='signup-fridge-img-container'>
+                <img src={bluefridge} />
             </div>
-            <label>
-                <span>Confirm Password</span>
-                <input type="password"
-                    value={password2}
-                    onChange={update('password2')}
-                    placeholder="Confirm Password"
-                />
-            </label>
-            <input
-                type="submit"
-                value="Sign Up"
-                disabled={!email || !username || !password || password !== password2}
-            />
-        </form>
+        </div>
     );
 }
 
