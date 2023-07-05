@@ -5,11 +5,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import errors from './errors';
 import recipesReducer from './recipes';
+import ingredientsReducer from './ingredients';
 
 const rootReducer = combineReducers({
     session,
     errors,
-    recipes: recipesReducer
+    recipes: recipesReducer,
+    ingredients: ingredientsReducer
 });
 
 let enhancer;
