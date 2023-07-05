@@ -17,7 +17,7 @@ const receiveRecipes = (recipes) => {
     // debugger
     return {
         type: RECEIVE_RECIPES,
-        recipes: recipes,
+        recipes
     };
 };
 
@@ -55,9 +55,9 @@ export const fetchRecipes = (ingredients) => async (dispatch) => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const recipes = await response.json();
+        const data = await response.json();
         // debugger
-        dispatch(receiveRecipes(recipes));
+        dispatch(receiveRecipes(data.recipe));
     } catch (err) {
         dispatch({ type: "FETCH_RECIPES_FAILURE", payload: err.message });
     }

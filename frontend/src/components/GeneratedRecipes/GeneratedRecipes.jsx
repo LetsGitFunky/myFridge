@@ -9,39 +9,37 @@ function GeneratedRecipes() {
     const { isFetching, recipesObj } = useSelector((state) => state.recipes);
     const [recipes, setRecipes] = useState([]);
 
-    //when Obj changes, update array
-    useEffect(() => {
-        console.log(recipesObj)
-        if (recipesObj) {
-            setRecipes(Object.values(recipesObj));
-            console.log(recipes)
-        }
-    }, [recipesObj]);
+    console.log(isFetching)
 
+    
+    
     useEffect(() => {
-        if (!isFetching && recipes) {
-            console.log(recipes);
+        if (!isFetching) {
+            // const recipeArr = Object.values(recipesObj)
+            console.log(recipesObj)
+            // setRecipes(recipeArr)
+            // console.log(recipeArr)
         }
-    }, [isFetching, recipes]);
-
+    }, [isFetching])
+    
     if (isFetching) {
         return <div>Loading...</div>;
     }
-
+    console.log(recipesObj)
+    
     return (
         <>
-            <div className="generated-recipes-container">
+            {/* <div className="generated-recipes-container">
                 {recipes &&
                     recipes.map((recipe) => (
-                        <div >
+                        <div>
                             <h2>{recipe.name}</h2>
                             <p>{recipe.ingredients.first}</p>
                         </div>
                     ))}
-            </div>
+            </div> */}
         </>
     );
 }
 
 export default GeneratedRecipes;
-
