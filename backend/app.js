@@ -60,14 +60,6 @@ app.use('/api/csrf', csrfRouter);
 app.use('/api/recipes', recipeRoutes);
 app.use('/api/ingredients', ingredientRouter)
 
-// Express custom middleware for catching all unmatched requests and formatting
-// a 404 error to be sent as the response.
-app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.statusCode = 404;
-    next(err);
-});
-
 // Serve static React build files statically in production
 if (isProduction) {
     const path = require('path');
@@ -90,6 +82,14 @@ app.get(/^(?!\/?api).*/, (req, res) => {
     );
 });
 }
+
+// Express custom middleware for catching all unmatched requests and formatting
+// a 404 error to be sent as the response.
+app.use((req, res, next) => {
+    const err = new Error('Not Found');
+    err.statusCode = 404;
+    next(err);
+});
 
 const serverErrorLogger = debug('backend:error');
 
