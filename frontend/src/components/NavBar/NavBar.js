@@ -1,9 +1,9 @@
 // src/components/NavBar/NavBar.js
 
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { logout } from '../../store/session';
+import { NavLink } from 'react-router-dom/';
 
 function NavBar () {
     const loggedIn = useSelector(state => !!state.session.user);
@@ -18,27 +18,26 @@ function NavBar () {
         if (loggedIn) {
             return (
                 <div className="links-nav">
-                    <Link to={'/tweets'}>All Tweets</Link>
-                    <Link to={'/profile'}>Profile</Link>
-                    <Link to={'/tweets/new'}>Write a Tweet</Link>
-                    <button onClick={logoutUser}>Logout</button>
+                    <NavLink id="saved-navbutton" exact to={'/saved'}>Saved Recipes</NavLink>
+                    <NavLink id="myfridge-navbutton" exact to={'/'}>myFridge</NavLink>
+                    <button className="nav-buttons" onClick={logoutUser}>Logout</button>
                 </div>
             );
         } else {
             return (
                 <div className="links-auth">
-                    <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link>
+                    <NavLink exact to={'/signup'}>Signup</NavLink>
+                    <NavLink exact to={'/login'}>Login</NavLink>
                 </div>
             );
         }
     }
 
     return (
-        <>
-            <h1>Chirper</h1>
+        <div className = "navbar">
+            <h1>myFridge</h1>
             { getLinks() }
-        </>
+        </div>
     );
 }
 
