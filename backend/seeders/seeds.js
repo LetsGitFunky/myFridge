@@ -3,8 +3,9 @@ const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
+require('dotenv').config();
 
-const NUM_SEED_USERS = 10;
+// const NUM_SEED_USERS = 10;
 
 // Create users
 const users = [];
@@ -12,24 +13,24 @@ const users = [];
 users.push(
     new User ({
         username: 'demo-user',
-        email: 'demo-user@appacademy.io',
-        hashedPassword: bcrypt.hashSync('starwars', 10)
+        email: 'demo@user.io',
+        hashedPassword: bcrypt.hashSync('password', 10)
     })
 )
 
-for (let i = 1; i < NUM_SEED_USERS; i++) {
-    const firstName = faker.person.firstName();
-    const lastName =  faker.person.lastName();
-    users.push(
-        new User ({
-            username: faker.internet.userName({firstName, lastName}),
-            email: faker.internet.email({firstName, lastName}),
-            hashedPassword: bcrypt.hashSync(faker.internet.password(), 10)
-    })
-    )
-}
+// for (let i = 1; i < NUM_SEED_USERS; i++) {
+//     const firstName = faker.person.firstName();
+//     const lastName =  faker.person.lastName();
+//     users.push(
+//         new User ({
+//             username: faker.internet.userName({firstName, lastName}),
+//             email: faker.internet.email({firstName, lastName}),
+//             hashedPassword: bcrypt.hashSync(faker.internet.password(), 10)
+//     })
+//     )
+// }
 
-
+// const mongoURI = 'mongodb+srv://admin:LyAIo0ofwieIPXJE@mern.ddxzvcp.mongodb.net/?retryWrites=true&w=majority';
 // Connect to database
 mongoose
     .connect(db, { useNewUrlParser: true })
