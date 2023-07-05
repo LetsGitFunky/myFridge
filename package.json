@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hannadarwish/mern-twitter.git"
+    "url": "git+https://github.com/LetsGitFunky/myFridge.git"
   },
   "keywords": [],
-  "author": "Hanna Darwish",
+  "author": "Hanna Darwish, Matthew Montejo, Nick Gentry, Nick Hein",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hannadarwish/mern-twitter/issues"
+    "url": "https://github.com/LetsGitFunky/myFridge/issues"
   },
-  "homepage": "https://github.com/hannadarwish/mern-twitter#readme",
+  "homepage": "https://github.com/LetsGitFunky/myFridge#readme",
   "engines": {
     "node": "16.20.0"
   },
