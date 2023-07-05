@@ -15,6 +15,10 @@ import GeneratedRecipes from './components/GeneratedRecipes/GeneratedRecipes';
 import SavedRecipesIndex from './components/SavedRecipesIndex/SavedRecipesIndex';
 import { getCurrentUser } from './store/session';
 
+import RecipeGeneratorForm from './components/RecipeGeneratorForm/RecipeGeneratorForm';
+
+
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -25,7 +29,7 @@ function App() {
   return loaded && (
     <>
       <NavBar />
-      <RecipeGeneratorForm />
+      <RecipeGeneratorForm/>
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
