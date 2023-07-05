@@ -57,7 +57,7 @@ export const fetchIngredients = ingredients => async dispatch => {
 };
 
 export const deleteIngredient = ingredientId => async (dispatch) => {
-    const response = await csrfFetch (`/api/ingredients/${ingredientId}`, {
+    const response = await jwtFetch (`/api/ingredients/${ingredientId}`, {
         method: 'DELETE'
     });
 
