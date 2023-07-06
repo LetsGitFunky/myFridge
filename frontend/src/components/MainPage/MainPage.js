@@ -4,8 +4,8 @@ import Fridge from "../Fridge/Fridge";
 import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
 import './MainPage.css'
 import tanfridgecropped from './Images/tanfridgecropped.png'
-import { AiFillGithub } from 'react-icons/ai';
 import GeneratedRecipes from "../GeneratedRecipes/GeneratedRecipes";
+import {AiFillGithub} from 'react-icons/ai';
 
 function MainPage() {
     return (

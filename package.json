@@ -24,5 +24,8 @@
   "engines": {
     "node": "v16.20.0"
   },
-  "homepage": "https://github.com/LetsGitFunky/myFridge#readme"
+  "homepage": "https://github.com/LetsGitFunky/myFridge#readme",
+  "dependencies": {
+    "react-icons": "^4.10.1"
+  }
 }

@@ -51,11 +51,17 @@
 
 #quick-form-title-text {
     font-size: 1rem;
+    color:#FF7F50;
+}
+
+#list-ingredients-text {
+    font-size: 0.8rem;
+    align-items: flex-start;
+    color: #FF7F50;
 }
 
 .input-field {
     border: 1px solid light grey;
     border-radius: 5px;
     padding: 5px;
-    /* Add any additional styles as needed */
 }
