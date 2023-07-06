@@ -1,0 +1,70 @@
+.outer-container {
+    max-width: fit-content;
+    position: relative;
+}
+
+.fridge-img-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100%;
+}
+
+.fridge-img-container img {
+    max-height: 600px;
+    min-height: 500px;
+    object-fit: contain;
+}
+
+.mainpage-container {
+    position: relative;
+    display: flex;
+}
+
+.overlay-div1 {
+    position: absolute;
+    top: 62%;
+    left: 5.5%;
+    background-color: red;
+    width: 222px;
+    height: 183px;
+    z-index: 2;
+}
+
+.overlay-div2 {
+    position: absolute;
+    top: 77%;
+    left: 73.5%;
+    transform: translate(-50%, -50%);
+    background-color: blue;
+    width: 226px;
+    height: 186px;
+    z-index: 2;
+}
+
+.overlay-div1 p,
+.overlay-div2 p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 3;
+}
+
+.ingredients-container {
+    flex: 1;
+    height: 575px;
+    background-color: yellow;
+    min-width: 250px;
+}
+
+.gen-recipes-container {
+    height: 575px;
+    background-color: pink;
+    min-width: 250px;
+}
