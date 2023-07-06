@@ -30,7 +30,6 @@ function App() {
   return loaded && (
     <>
       <NavBar />
-      <RecipeGeneratorForm/>
       <Switch>
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />

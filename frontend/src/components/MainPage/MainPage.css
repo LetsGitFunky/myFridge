@@ -1,6 +1,7 @@
 .outer-container {
     max-width: fit-content;
     position: relative;
+    margin-top: 8%;
 }
 
 .fridge-img-container {
@@ -25,20 +26,31 @@
 
 .overlay-div1 {
     position: absolute;
-    top: 62%;
-    left: 5.5%;
-    background-color: red;
-    width: 222px;
-    height: 183px;
+    top: 61.5%;
+    left: 5%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    width: 228px;
+    height: 187px;
     z-index: 2;
+    box-shadow: 0 0 0 3px transparent; /* Start with a transparent box shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Add a transition for smooth effect */
+
+    /* Add hover effect */
+    &:hover {
+        -webkit-box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+        -moz-box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+        box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+    }
 }
+
 
 .overlay-div2 {
     position: absolute;
     top: 77%;
     left: 73.5%;
     transform: translate(-50%, -50%);
-    background-color: blue;
+    background-color: rgb(186, 234, 212);
     width: 226px;
     height: 186px;
     z-index: 2;
