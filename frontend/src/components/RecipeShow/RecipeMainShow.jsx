@@ -1,6 +1,5 @@
-import RightStepItem from "./RightStepItem";
-import 
-import { createRecipe } from "../../store/recipes";
+import StepItem from "./StepItem";
+import './StepItem.css';
 
 export default function RecipeMainShow({recipe}) {
     const dispatch = useDispatch()
@@ -12,7 +11,7 @@ export default function RecipeMainShow({recipe}) {
         <div className="recipe-main-show-wrapper">
             <ul className="recipe-main-steps">
             {recipe.instructions.map(step => (
-                <li className="step-item-recipt-left"><RightStepItem step={step}/></li>
+                <li className="step-item-recipt-left"><StepItem step={step}/></li>
                 ))}
                 <button onClick={handleClick}>Save Recipe</button>
             </ul>
