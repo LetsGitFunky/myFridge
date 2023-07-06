@@ -11,7 +11,7 @@ const User = require("../../models/User");
 const Ingredient = require("../../models/Ingredient");
 
 //  find the current user and grab their fridge - which is all the ingredients
-router.get('/', requireUser, async (req, res) => {
+router.get('/:userId', requireUser, async (req, res) => {
     try {
         const user = await User.findById(req.user._id).populate("fridge");
         if (!user.fridge) {
