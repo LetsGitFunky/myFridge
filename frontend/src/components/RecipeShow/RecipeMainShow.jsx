@@ -1,4 +1,5 @@
 import StepItem from "./StepItem";
+import './StepItem.css';
 
 export default function RecipeMainShow({recipe}) {
     return (
