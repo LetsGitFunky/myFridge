@@ -41,7 +41,7 @@ const RecipeGeneratorForm = () => {
         <div className="recgen-form-container">
             <h3 id="quick-form-title-text">Quick Recipe Generator</h3>
             <form onSubmit={handleSubmit}>
-                <label>List ingredients:</label>
+                <label id="list-ingredients-text">List ingredients:</label>
                 <input className="input-field"
                     type="text"
                     id="ingredients"
