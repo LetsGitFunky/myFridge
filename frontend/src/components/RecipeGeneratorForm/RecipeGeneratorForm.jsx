@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchRecipes } from "../../store/recipes";
-import { Redirect } from 'react-router-dom'; // for GeneratedRecipes
+// import { Redirect } from 'react-router-dom'; // for GeneratedRecipes
 
 const RecipeGeneratorForm = () => {
     // Store ingredients entered in the form
@@ -32,9 +32,9 @@ const RecipeGeneratorForm = () => {
     };
 
     // Redirect to the recipes page when the fetchRecipes promise is resolved
-    if (redirect) {
-        return <Redirect to="/recipes" />;
-    }
+    // if (redirect) {
+    //     return <Redirect to="/recipes" />;
+    // }
 
     return (
         <div>
