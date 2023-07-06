@@ -1,6 +1,7 @@
 .outer-container {
     max-width: fit-content;
     position: relative;
+    margin-top: 8%;
 }
 
 .fridge-img-container {
@@ -25,12 +26,21 @@
 
 .overlay-div1 {
     position: absolute;
-    top: 62%;
-    left: 5.5%;
-    background-color: red;
-    width: 222px;
-    height: 183px;
+    top: 61.5%;
+    left: 5%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    width: 228px;
+    height: 187px;
     z-index: 2;
+    box-shadow: 0 0 0 3px transparent; 
+    transition: box-shadow 0.3s ease-in-out; 
+    /* Add hover effect */
+    &:hover {
+        -webkit-box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+        -moz-box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+        box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+    }
 }
 
 .overlay-div2 {
@@ -38,10 +48,19 @@
     top: 77%;
     left: 73.5%;
     transform: translate(-50%, -50%);
-    background-color: blue;
-    width: 226px;
-    height: 186px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    width: 231px;
+    height: 193px;
     z-index: 2;
+    box-shadow: 0 0 0 3px transparent; 
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+        -webkit-box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+        -moz-box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+        box-shadow: 0px 0px 100px 0px rgb(246, 255, 0);
+    }
 }
 
 .overlay-div1 p,
@@ -58,13 +77,75 @@
 
 .ingredients-container {
     flex: 1;
-    height: 575px;
+    max-height: 600px;
     background-color: yellow;
-    min-width: 250px;
+    min-width: 15%;
+    max-width: 15%;
 }
 
 .gen-recipes-container {
-    height: 575px;
-    background-color: pink;
-    min-width: 250px;
+    max-height: 600px;
+    background-color: #caf0ff;
+    min-width: 30%;
+    overflow: auto;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    margin-right: 10px; 
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.github-icon {
+    margin-left: 5px;
+    font-size: 30px;
+    transition: color 0.1s ease-in-out;
+}
+
+.github-icon:hover {
+    color: #00ac84; /* Change the color on hover to the desired color */
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    margin-right: 10px; 
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.github-icon {
+    margin-left: 5px;
+    font-size: 30px;
+    transition: color 0.1s ease-in-out;
+}
+
+.github-icon:hover {
+    color: #00ac84; /* Change the color on hover to the desired color */
 }

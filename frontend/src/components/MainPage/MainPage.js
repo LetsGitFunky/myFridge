@@ -1,10 +1,11 @@
 // src/components/MainPage/MainPage.js
 
 import Fridge from "../Fridge/Fridge";
-// import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
+import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
 import './MainPage.css'
 import tanfridgecropped from './Images/tanfridgecropped.png'
-// import IngredientsForm
+import GeneratedRecipes from "../GeneratedRecipes/GeneratedRecipes";
+import {AiFillGithub} from 'react-icons/ai';
 
 function MainPage() {
     return (
@@ -13,27 +14,26 @@ function MainPage() {
             <div className="fridge-img-container">
                 <img src={tanfridgecropped} alt="Fridge" />
                 <div className="overlay-div1">
-                     {/* <IngredientsForm /> */}
-                    <p>QUICK RECIPE GENERATOR FORM</p>
+                    <RecipeGeneratorForm />
                 </div>
                 <div className="overlay-div2">
-                    {/* <RecipeGeneratorForm /> */}
-                    <p> ADD/REMOVE INGREDIENTS FORM</p>
+                     {/* <IngredientsForm /> */}
                 </div>
                 </div>
             <div className='ingredients-container'>
-            INGREDIENTS INDEX COMPONENT
-            <br/>
-            Select ingredients in the list
-            <br/>
-            Button to generate recipes
+                INGREDIENTS INDEX COMPONENT
             </div>
             <div className='gen-recipes-container'>
-                GENERATED RECIPES COMPONENT
+                <GeneratedRecipes/>
             </div>
         </div>
         <footer>
-        Copyright &copy; 2023 myFridge
+            <span className="footer-text">
+                Copyright &copy; 2023 myFridge
+            </span>
+            <a href="https://github.com/LetsGitFunky/myFridge" className="icon-link">
+                <AiFillGithub className="github-icon" />
+            </a>
         </footer>
         </div>
     );
