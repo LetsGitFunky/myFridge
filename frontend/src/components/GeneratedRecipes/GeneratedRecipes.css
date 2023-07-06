@@ -6,6 +6,7 @@
     color:#00ac84;
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 .genrec-index-container h1 {
@@ -37,7 +38,8 @@
 
 .genrec-ul {
     margin-bottom: 5px;
-    color:#00ac84
+    color:#00ac84;
+    text-align: center;
 }
 
 #loading-text {
@@ -46,4 +48,11 @@
     text-align: center;
     color: white;
     -webkit-text-stroke: 0.1rem #6495ED;
+}
+
+#loading-image {
+    width: 200px; 
+    height: auto;
+    margin-left: 100px;
+    margin-right: auto; 
 }
