@@ -28,9 +28,10 @@
 
 #myfridge-text {
     color: #87CEEB;
-    -webkit-text-stroke: 0.1px #6495ED;
-    margin-left: 20px;
-    margin-top: 80px;
+    -webkit-text-stroke: 1px #6495ED;
+    margin-left: 5%;
+    margin-top: 16%;
+    font-size: 1.5rem;
 }
 
 .links-nav, .links-auth {
@@ -95,12 +96,12 @@
 }
 
 #tagline-nav {
-    margin-top: 60px;
-    margin-left: 10px;
-    font-size: 15px;
+    margin-top: 17%;
+    margin-left: 3%;
+    font-size: 1rem;
     white-space: nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
-    max-width: 300px;
+    max-width: 20%;
     color: #00ac84;
 }
