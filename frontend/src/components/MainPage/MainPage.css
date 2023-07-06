@@ -70,13 +70,15 @@
 
 .ingredients-container {
     flex: 1;
-    height: 575px;
+    max-height: 600px;
     background-color: yellow;
-    min-width: 250px;
+    min-width: 15%;
+    max-width: 15%;
 }
 
 .gen-recipes-container {
-    height: 575px;
-    background-color: pink;
-    min-width: 250px;
+    max-height: 600px;
+    background-color: #caf0ff;
+    min-width: 30%;
+    overflow: auto;
 }
