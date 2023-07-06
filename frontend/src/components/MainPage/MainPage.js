@@ -1,5 +1,7 @@
 // src/components/MainPage/MainPage.js
 
+import Fridge from "../Fridge/Fridge";
+
 // import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
 
 function MainPage() {

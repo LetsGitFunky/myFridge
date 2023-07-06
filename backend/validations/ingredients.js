@@ -7,7 +7,8 @@ const handleValidationErrors = require('./handleValidationErrors');
 const validateIngredient = [
     check('name')
         .exists({checkFalsy: true}),
-        handleValidationErrors,
+        handleValidationErrors
+
 ];
 
 module.exports = validateIngredient;

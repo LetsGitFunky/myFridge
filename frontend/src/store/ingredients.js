@@ -38,19 +38,21 @@ export const getIngredients = (state) => (
 // thunk action creators
 
 export const fetchIngredients = ingredients => async dispatch => {
+    console.log({...ingredients}, "top of fetchIngredients")  // ingredients = {ingredients: eggs}
     try {
         const response = await jwtFetch('/api/ingredients', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ingredients })
+            body: JSON.stringify({name: ingredients})
         });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const ingredients = await response.json();
-        dispatch(receiveIngredients(ingredients));
+        const data = await response.json();
+        console.log({data}, "before dispatch")
+        dispatch(receiveIngredients(data));
     } catch (err) {
         dispatch({ type: 'FETCH_ingredients_FAILURE', payload: err.message });
     }
