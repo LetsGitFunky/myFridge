@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 // import RecipeShow from "../RecipeShow/RecipeShow"
 import { Link } from 'react-router-dom';
-import RecipeShow from "../RecipeShow/RecipeShow";
+import RecipeMainShow from "../RecipeShow/RecipeShow";
 
 
 export default function GeneratedRecipes() {
@@ -23,30 +23,10 @@ export default function GeneratedRecipes() {
                         <button onClick={() => setActiveRecipe(activeRecipe === recipe ? null : recipe)}>
                             {recipe.name}
                         </button>
-                        {activeRecipe === recipe && <RecipeShow recipe={recipe}/>}
                     </li>
-
-                    {/* <label>{recipe.name} */}
-                    {/* <Link to={`/recipes/${index}`}>{recipe.name}</Link> */}
-
-                    {/* </label> */}
-
-                    {/* <RecipeShow recipe={recipe}/> */}
-                    {/* <h2>{recipe.name}</h2>
-                    <h3>Ingredients:</h3>
-                    <ul>
-                        {recipe.ingredients.map((ingredient, index) => (
-                            <li key={index}>{ingredient}</li>
-                        ))}
-                    </ul>
-                    <h3>Instructions:</h3>
-                    <ol>
-                        {recipe.instructions.map((instruction, index) => (
-                            <li key={index}>{instruction.description}</li>
-                        ))}
-                    </ol> */}
                 </div>
             ))}
+            {activeRecipe && <RecipeMainShow recipe={activeRecipe}/>}
         </div>
     );
 }
