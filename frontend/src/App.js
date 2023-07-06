@@ -32,10 +32,10 @@ function App() {
       <NavBar />
       <RecipeGeneratorForm/>
       <Switch>
-        <AuthRoute exact path="/" component={MainPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
 
+        <ProtectedRoute exact path="/" component={MainPage} />
         <ProtectedRoute exact path="/recipes" component={GeneratedRecipes} />
         <ProtectedRoute exact path="/recipes/:recipeId" component={RecipeShow} />
         <ProtectedRoute exact path="/saved" component={SavedRecipesIndex} />
