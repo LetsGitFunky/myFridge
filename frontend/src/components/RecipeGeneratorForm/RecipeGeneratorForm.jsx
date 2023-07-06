@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchRecipes } from "../../store/recipes";
 import { Redirect } from 'react-router-dom'; // for GeneratedRecipes
+import './RecipeGeneratorForm.css'
 
 const RecipeGeneratorForm = () => {
     // Store ingredients entered in the form
@@ -37,15 +38,16 @@ const RecipeGeneratorForm = () => {
     }
 
     return (
-        <div>
-            <h2>Quick Recipe Generator</h2>
+        <div className="recgen-form-container">
+            <h3 id="quick-form-title-text">Quick Recipe Generator</h3>
             <form onSubmit={handleSubmit}>
-                <label>Ingredients:</label>
-                <input
+                <label>List ingredients:</label>
+                <input className="input-field"
                     type="text"
                     id="ingredients"
                     name="ingredients"
                     value={ingredients}
+                    placeholder="eggs, chicken, potatoes, garlic..."
                     onChange={handleInputChange}
                 />
                 <button type="submit">Generate Recipes</button>

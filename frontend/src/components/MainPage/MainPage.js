@@ -1,7 +1,7 @@
 // src/components/MainPage/MainPage.js
 
 import Fridge from "../Fridge/Fridge";
-// import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
+import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
 import './MainPage.css'
 import tanfridgecropped from './Images/tanfridgecropped.png'
 // import IngredientsForm
@@ -13,12 +13,10 @@ function MainPage() {
             <div className="fridge-img-container">
                 <img src={tanfridgecropped} alt="Fridge" />
                 <div className="overlay-div1">
-                     {/* <IngredientsForm /> */}
-                    <p>QUICK RECIPE GENERATOR FORM</p>
+                    <RecipeGeneratorForm />
                 </div>
                 <div className="overlay-div2">
-                    {/* <RecipeGeneratorForm /> */}
-                    <p> ADD/REMOVE INGREDIENTS FORM</p>
+                     {/* <IngredientsForm /> */}
                 </div>
                 </div>
             <div className='ingredients-container'>
