@@ -20,7 +20,7 @@ export default function GeneratedRecipes() {
             {recipes.map((recipe, index) => (
                 <div key={`recipe-${index}`}>
                     <li>
-                        <button onClick={() => setActiveRecipe(recipe)}>
+                        <button onClick={() => setActiveRecipe(activeRecipe === recipe ? null : recipe)}>
                             {recipe.name}
                         </button>
                         {activeRecipe === recipe && <RecipeShow recipe={recipe}/>}

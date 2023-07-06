@@ -9,7 +9,7 @@ export default function RecipeShow({recipe}) {
     return (
         <div className="recipe-show-wrapper">
             <div className="recipe-left-container">
-                <RecipeLeft recipe={recipe}/>
+                {/* <RecipeLeft recipe={recipe}/> */}
             </div>
             <div className="recipe-main-show-container">
                 <h1>Lets Get Cooking Chef {sessionUser.username}!</h1>
