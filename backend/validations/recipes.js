@@ -1,31 +1,43 @@
 // validations/recipes.js
 
-const { check } = require("express-validator");
-const handleValidationErrors = require('./handleValidationErrors');
-
+const { check, validationResult } = require("express-validator");
 
 const validateRecipeInput = [
     check('name')
-        .exists({checkFalsy: true}),
-        handleValidationErrors,
+        .exists({checkFalsy: true})
+        .withMessage('Name is required'),
 
     check('ingredients')
-        .exists({checkFalsy: true}),
-        handleValidationErrors,
+        .exists({checkFalsy: true})
+        .isArray()
+        .withMessage('Ingredients are required and should be an array'),
 
     check('instructions')
-        .exists({ checkFalsy: true }),
-        handleValidationErrors,
-        
-    check('step')
+        .exists({checkFalsy: true})
+        .isArray()
+        .withMessage('Instructions are required and should be an array'),
+
+    check('instructions.*.step')
         .exists({ checkFalsy: true })
-        .isNumeric(),   // auto fill from vs code to ensure step is a number.
-        handleValidationErrors,  // since recipes will be coming from chat no custom error messages?
+        .isNumeric()
+        .withMessage('Step number is required and it should be a number'),
 
-    check('description')
-        .exists({ checkFalsy: true }),
-        handleValidationErrors, // no max length.
+    check('instructions.*.description')
+        .exists({ checkFalsy: true })
+        .withMessage('Description is required'),
 
+    // Call custom middleware function after all checks
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                message: "Validation Error",
+                statusCode: 400,
+                errors: errors.array(),
+            });
+        }
+        next();
+    }
 ];
 
 module.exports = validateRecipeInput;

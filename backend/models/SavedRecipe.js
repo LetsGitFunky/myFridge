@@ -13,8 +13,7 @@ const savedRecipeSchema = new Schema({
     },
     recipe: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'Recipe',
+            type: Object,
             required: true
         }
     ],
@@ -26,4 +25,6 @@ const savedRecipeSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('SavedRecipe', savedRecipeSchema);
+const SavedRecipe = mongoose.model('SavedRecipe', savedRecipeSchema);
+
+module.exports = SavedRecipe;
