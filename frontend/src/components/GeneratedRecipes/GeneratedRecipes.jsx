@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RecipeMainShow from "../RecipeShow/RecipeShow";
 import './GeneratedRecipes.css'
+import chefloadingnew from './Images/chefloadingnew.png'
 
 
 export default function GeneratedRecipes() {
@@ -12,7 +13,12 @@ export default function GeneratedRecipes() {
     const recipes = useSelector(state => state.recipes.recipe);
 
     if (!recipes) {
-        return <h1>Loading...</h1>;
+        return (
+            <div>
+                <h1 id="loading-text">Loading...</h1>   
+                <img id="loading-image" src={chefloadingnew} />
+            </div>
+        )
     }
 
     return (
