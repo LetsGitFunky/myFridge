@@ -1,11 +1,11 @@
-import RightStepItem from "./RightStepItem";
+import StepItem from "./StepItem";
 
 export default function RecipeMainShow({recipe}) {
     return (
         <div className="recipe-main-show-wrapper">
             <ul className="recipe-main-steps">
             {recipe.instructions.map(step => (
-                <li className="step-item-recipt-left"><RightStepItem step={step}/></li>
+                <li className="step-item-recipt-left"><StepItem step={step}/></li>
                 ))}
             </ul>
         </div>
