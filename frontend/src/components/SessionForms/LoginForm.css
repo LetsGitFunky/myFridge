@@ -10,7 +10,6 @@
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
-    /* margin-top: 20px; */
 }
 
 .session-form {
@@ -20,29 +19,25 @@
     padding: 10px;
 }
 
-/* .form-container:hover {
-    border: 2px solid yellow;
-    box-shadow: 0 0 5px yellow;
-} */
-
-form span {
+/* form span {
     color: #FF7F50;
     font-family: 'Itim', cursive;
     font-size: 20px;
-}
+} */
 
 #login-title-text {
     color: #87CEEB;
     margin-bottom: 30px;
-    font-size: 50px;
+    font-size: 4rem;
     font-style: bold;
-    -webkit-text-stroke: 0.1px #6495ED;
+    -webkit-text-stroke: 0.12rem #6495ED;
     max-width: 300px;
 }
 
 p {
     color: #00ac84;
     max-width: 200px;
+    font-size: 1.3rem;
 }
 
 form input {
