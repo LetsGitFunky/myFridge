@@ -1,5 +1,6 @@
 import LeftStepItem from "./LeftStepItem";
 
+
 export default function RecipeLeft({recipe}) {
     return (
         <div className="recipe-left-wrapper">

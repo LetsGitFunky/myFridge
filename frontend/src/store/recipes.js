@@ -53,10 +53,27 @@ export const fetchRecipes = ingredients => async dispatch => {
     }
 };
 
+export const createRecipe = (Recipe) => async (dispatch) => {
+    const res = await jwtFetch(`/api/savedRecipes/`, {
+        method: "POST",
+        header: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Recipe),
+    });
+
+    if (res.ok) {
+        const recipe = await res.json();
+        debugger
+        dispatch(receiveRecipes(recipe));
+    }
+};
+
 
 //Recipe Reducer
 export default function recipesReducer(state = {}, action) {
     let newState;
+    debugger
 
     switch (action.type) {
         case RECEIVE_RECIPES:
