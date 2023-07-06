@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 // import RecipeShow from "../RecipeShow/RecipeShow"
 import { Link } from 'react-router-dom';
 import RecipeMainShow from "../RecipeShow/RecipeShow";
+import './GeneratedRecipes.css'
 
 
 export default function GeneratedRecipes() {
@@ -15,15 +16,15 @@ export default function GeneratedRecipes() {
     }
 
     return (
-        <div>
-            <h1>Generated Recipes</h1>
+        <div className="genrec-index-container">
+            <h1 id="genrec-title">Generated Recipes</h1>
             {recipes.map((recipe, index) => (
                 <div key={`recipe-${index}`}>
-                    <li>
+                    <ul className="genrec-ul">
                         <button onClick={() => setActiveRecipe(activeRecipe === recipe ? null : recipe)}>
                             {recipe.name}
                         </button>
-                    </li>
+                    </ul>
                 </div>
             ))}
             {activeRecipe && <RecipeMainShow recipe={activeRecipe}/>}

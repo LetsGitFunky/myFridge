@@ -4,9 +4,8 @@ import Fridge from "../Fridge/Fridge";
 import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
 import './MainPage.css'
 import tanfridgecropped from './Images/tanfridgecropped.png'
-import { AiFillGithub } from 'react-icons/ai';
 import GeneratedRecipes from "../GeneratedRecipes/GeneratedRecipes";
-
+import {AiFillGithub} from 'react-icons/ai';
 
 function MainPage() {
     return (
@@ -22,11 +21,7 @@ function MainPage() {
                 </div>
                 </div>
             <div className='ingredients-container'>
-            INGREDIENTS INDEX COMPONENT
-            <br/>
-            Select ingredients in the list
-            <br/>
-            Button to generate recipes
+                INGREDIENTS INDEX COMPONENT
             </div>
             <div className='gen-recipes-container'>
                 <GeneratedRecipes/>

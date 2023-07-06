@@ -77,15 +77,47 @@
 
 .ingredients-container {
     flex: 1;
-    height: 575px;
+    max-height: 600px;
     background-color: yellow;
-    min-width: 250px;
+    min-width: 15%;
+    max-width: 15%;
 }
 
 .gen-recipes-container {
-    height: 575px;
-    background-color: pink;
-    min-width: 250px;
+    max-height: 600px;
+    background-color: #caf0ff;
+    min-width: 30%;
+    overflow: auto;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    margin-right: 10px; 
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.github-icon {
+    margin-left: 5px;
+    font-size: 30px;
+    transition: color 0.1s ease-in-out;
+}
+
+.github-icon:hover {
+    color: #00ac84; /* Change the color on hover to the desired color */
 }
 
 footer {
