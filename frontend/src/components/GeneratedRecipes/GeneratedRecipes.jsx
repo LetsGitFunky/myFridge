@@ -12,7 +12,7 @@ export default function GeneratedRecipes() {
     const recipes = useSelector(state => state.recipes.recipe);
 
     if (!recipes) {
-        return <h1>Loading...</h1>;
+        return <h1 id="loading-text">Loading...</h1>;
     }
 
     return (
