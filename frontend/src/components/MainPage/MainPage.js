@@ -4,6 +4,7 @@ import Fridge from "../Fridge/Fridge";
 import RecipeGeneratorForm from "../RecipeGeneratorForm/RecipeGeneratorForm";
 import './MainPage.css'
 import tanfridgecropped from './Images/tanfridgecropped.png'
+import GeneratedRecipes from "../GeneratedRecipes/GeneratedRecipes";
 // import IngredientsForm
 
 function MainPage() {
@@ -27,7 +28,7 @@ function MainPage() {
             Button to generate recipes
             </div>
             <div className='gen-recipes-container'>
-                GENERATED RECIPES COMPONENT
+                <GeneratedRecipes/>
             </div>
         </div>
         <footer>
