@@ -36,6 +36,21 @@
     outline: none;
 }
 
+#saved-button {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: grey;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: 'Itim', cursive;
+    color: white;
+    border-radius: 7px;
+    transition: background-color 0.3s ease;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid grey;
+}
+
 .genrec-ul {
     margin-bottom: 5px;
     color:#00ac84;
