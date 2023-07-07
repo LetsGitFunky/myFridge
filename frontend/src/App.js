@@ -14,6 +14,7 @@ import RecipeShow from './components/RecipeShow/RecipeShow';
 import GeneratedRecipes from './components/GeneratedRecipes/GeneratedRecipes';
 import SavedRecipesIndex from './components/SavedRecipesIndex/SavedRecipesIndex';
 import { getCurrentUser } from './store/session';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <ProtectedRoute exact path="/recipes/:recipeId" component={RecipeShow} />
         <ProtectedRoute exact path="/saved" component={SavedRecipesIndex} />
       </Switch>
+      <Footer/>
     </>
   );
 }
