@@ -6,7 +6,7 @@
     position: relative;
     max-width: 1500px;
     width: 100%;
-    min-height: 100vh; /* Use min-height instead of height */
+    min-height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,32 +18,43 @@
 
 .recipe-index {
     width: 50%;
-    position: absolute; /* Add absolute positioning */
-    top: 50%; /* Position it 50% from the top */
-    left: 15%; /* Adjust the left positioning as needed */
+    position: absolute; 
+    top: 50%; 
+    left: 15%; 
     width: 30%;
-    transform: translateY(-50%); /* Center it vertically */
+    transform: translateY(-50%); 
     max-width: 350px; 
     max-height: 410px;
-    background-color: pink;
+    /* background-color: rgba(255, 255, 111, 0.491); */
+    border-radius: 20px;
     overflow: auto;
+    padding: 15px;
 }
 
 
 .recipe-show {
     width: 50%;
-    position: absolute; /* Add absolute positioning */
-    top: 50%; /* Position it 50% from the top */
-    right: 15%; /* Adjust the right positioning as needed */
+    position: absolute; 
+    top: 50%; 
+    right: 15%; 
     width: 30%;
-    transform: translateY(-50%); /* Center it vertically */
+    transform: translateY(-50%); 
     max-width: 400px; 
     max-height: 410px;
-    background-color: yellow;
+    /* background-color: rgba(255, 255, 111, 0.491); */
+    border-radius: 20px;
     overflow: auto;
+    padding: 15px;
 }
 
 .recipe-index p,
 .recipe-show p {
-    white-space: normal; /* Allow text to wrap */
+    white-space: normal; 
+}
+
+#my-saved-recipes-text {
+    color: #00ac84;
+    margin: 10px;
+    text-align: center;
+    font-size: 1.6rem;
 }

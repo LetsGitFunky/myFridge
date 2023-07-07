@@ -3,7 +3,7 @@ import './SavedRecipeShow.css';
 
 const SavedRecipeShow = ({ recipe }) => {
     return (
-        <div>
+        <div className='saved-recipe-show'>
             <h2>{recipe.name}</h2>
             <h3>Ingredients</h3>
             <ul>
