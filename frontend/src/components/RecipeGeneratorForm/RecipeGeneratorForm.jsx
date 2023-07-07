@@ -4,11 +4,13 @@ import { useDispatch } from "react-redux";
 import { fetchRecipes } from "../../store/recipes";
 // import { Redirect } from 'react-router-dom'; // for GeneratedRecipes
 import './RecipeGeneratorForm.css'
+import song from "./audio/myFridge.wav"
 
 const RecipeGeneratorForm = () => {
     // Store ingredients entered in the form
     const [ingredients, setIngredients] = useState("");
     const dispatch = useDispatch();
+    let audio = new Audio(song);
 
     // Updates the ingredients state variable as the user types in the input field
     const handleInputChange = (e) => {
@@ -18,6 +20,8 @@ const RecipeGeneratorForm = () => {
     // When form is submitted, it calls generateRecipe function with entered ingredients
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        audio.play();
 
         try {
             dispatch(fetchRecipes(ingredients))
