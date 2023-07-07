@@ -1,4 +1,4 @@
-import csrfFetch from "./csrf";
+import jwtFetch from './jwt';
 
 export const RECEIVE_NOTES = 'notes/RECEIVE_NOTES'
 export const RECEIVE_NOTE = 'notes/RECEIVE_NOTE'
@@ -34,7 +34,7 @@ export const getRecipeNotes = recipeId => state => {
 }
 
 export const fetchNotes = () => async(dispatch) => {
-    const response = await csrfFetch(`/api/notes`)
+    const response = await jwtFetch(`/api/notes`)
     if (response.ok){
         const data = await response.json()
         dispatch(receiveNotes(data))
@@ -43,7 +43,7 @@ export const fetchNotes = () => async(dispatch) => {
 
 export const createNote = note => async (dispatch) => {
     
-    const response = await csrfFetch(`/api/notes`,{
+    const response = await jwtFetch(`/api/notes`,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ export const createNote = note => async (dispatch) => {
 }
 
 export const updateNote = note => async (dispatch) => {
-    const response = await csrfFetch(`/api/notes/${note.id}`, {
+    const response = await jwtFetch(`/api/notes/${note.id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ export const updateNote = note => async (dispatch) => {
 }
 
 export const deleteNote = noteId => async (dispatch) => {
-    const response = await csrfFetch (`/api/notes/${noteId}`, {
+    const response = await jwtFetch (`/api/notes/${noteId}`, {
         method: 'DELETE'
     });
 
