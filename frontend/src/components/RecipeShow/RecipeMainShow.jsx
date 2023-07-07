@@ -26,6 +26,8 @@ export default function RecipeMainShow({ recipe }) {
         dispatch(createRecipe(savedRecipe));
         setSaved(true);
     };
+
+    
     return (
         <div className="recipe-main-show-wrapper">
             <ul className="recipe-main-steps">
