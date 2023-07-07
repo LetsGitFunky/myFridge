@@ -1,15 +1,13 @@
 import { useSelector } from "react-redux";
 import * as noteActions from '../../store/notes'
 
-export default function NoteIndex({recipe}) {
+export default function NoteItem({recipe}) {
     const recipeId = recipe._id
-    const allNotes = useSelector(noteActions.getRecipeNotes(recipeId))
+    const note = useSelector(noteActions.getRecipeNotes(recipeId))
 
     return (
         <div className="note-item">
-            {allNotes.map((note) => 
-            <li>{note}</li>
-            )}
+            <span className="note-body">{note.body}</span>
         </div>
     );
 };
