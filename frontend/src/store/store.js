@@ -6,6 +6,7 @@ import session from "./session";
 import errors from "./errors";
 import recipesReducer from "./recipes";
 import ingredientsReducer from "./ingredients";
+import notesReducer from "./notes";
 import savedRecipeReducer from "./savedRecipes";
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     recipes: recipesReducer,
     ingredients: ingredientsReducer,
     savedRecipes: savedRecipeReducer,
+    notes: notesReducer,
 });
 
 let enhancer;
