@@ -40,7 +40,7 @@ export const getIngredients = (state) => (
 export const fetchIngredients = userId => async (dispatch) => {
     try {
         const response = await jwtFetch(`/api/ingredients/${userId}`);
-    
+
         if (response.ok) {
             const ingredients = await response.json();
             dispatch(receiveIngredients(ingredients));
@@ -93,10 +93,11 @@ export default function ingredientsReducer(state = [], action) {
             return action.ingredients;
         case RECEIVE_INGREDIENT:
             nextState = {...state};
-            const ingredientId = action.ingredient.id;
+            const ingredientId = action.ingredient._id;
             nextState[ingredientId] = action.ingredient;
             return nextState;
         case REMOVE_INGREDIENT:
+            nextState = {...state};
             delete nextState[action.ingredientId];
             return nextState;
         default:

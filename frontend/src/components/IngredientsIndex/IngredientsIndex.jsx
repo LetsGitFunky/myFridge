@@ -1,7 +1,7 @@
 import React  from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIngredients } from "../../store/ingredients";
+import { fetchIngredients, deleteIngredient } from "../../store/ingredients";
 import { fetchRecipes } from "../../store/recipes"
 import './IngredientsIndex.css'
 
@@ -20,12 +20,12 @@ export default function IngredientsIndex() {
 
     const handleInputChange = (event) => {
         const target = event.target;
-        const value = target.name;
+        const value = target.name;  // this is now the ingredient's _id
 
         if(target.checked){
             setSelectedIngredients(prevIngredients => [...prevIngredients, value])
         } else {
-            setSelectedIngredients(prevIngredients => prevIngredients.filter(ingredient => ingredient !== value))
+            setSelectedIngredients(prevIngredients => prevIngredients.filter(ingredientId => ingredientId !== value))
         }
     }
 
@@ -35,21 +35,30 @@ export default function IngredientsIndex() {
         dispatch(fetchRecipes(selectedIngredients));
     };
 
+    const handleDelete = async (event) => {
+        event.preventDefault();
+        // Call deleteIngredient here with each selected ingredient's _id as parameter
+        selectedIngredients.forEach(ingredientId => {
+            dispatch(deleteIngredient(ingredientId));
+        });
+    }
+
     return (
         <div className="recipe-index-wrapper">
             <h1 id='ingredients-title'>Ingredients in myFridge:</h1>
             <form onSubmit={handleSubmit}>
-                {Array.isArray(ings) && ings.map((ingredient, i) => (
+            {Array.isArray(ings) && ings.map((ingredient, i) => (
                     <div key={i}>
-                        <input className="ingredient-item-text"
-                            name={ingredient}
+                        <input
+                            name={ingredient._id}  // use _id as the name
                             type="checkbox"
                             onChange={handleInputChange}
                         />
-                        <label>{ingredient}</label>
+                        <label>{ingredient.name}</label>
                     </div>
                 ))}
                 <button id="generate-recipes-button" type="submit">Generate Recipes</button>
+                <button id="delete-ingredients-button" onClick={handleDelete}>Remove from Fridge</button>
             </form>
         </div>
     )
