@@ -23,6 +23,8 @@ export default function RecipeMainShow({ recipe }) {
         // think i need to add user to this object
         dispatch(createRecipe(savedRecipe));
     };
+
+    
     return (
         <div className="recipe-main-show-wrapper">
             <ul className="recipe-main-steps">

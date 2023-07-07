@@ -13,7 +13,7 @@ router.get("/", requireUser, async (req, res) => {
         const savedRecipes = await SavedRecipe.find({ user: req.user._id }); // finding all recipes for logged-in user
         // Convert array to object
         const savedRecipesObject = savedRecipes.reduce((obj, recipe) => {
-            obj[recipe._id] = recipe.recipe;  // Access the inner recipe object here
+            obj[recipe._id] = { ...recipe.recipe, _id: recipe._id }; // Copy all properties of recipe and add _id as a property
             return obj;
         }, {});
 
