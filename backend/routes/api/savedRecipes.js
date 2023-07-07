@@ -47,7 +47,7 @@ router.post("/", requireUser, validateRecipeInput, async (req, res, next) => {
 
         let savedRecipe = await newSavedRecipe.save();
         // savedRecipe = await savedRecipe.populate("name");
-        console.log(savedRecipe);
+        // console.log(savedRecipe);
         return res.json(savedRecipe);
     } catch (err) {
         next(err);

@@ -35,7 +35,7 @@ users.push(
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => {
-        console.log('Connected to MongoDB successfully');
+        // console.log('Connected to MongoDB successfully');
         insertSeeds();
     })
     .catch(err => {
@@ -49,7 +49,7 @@ mongoose
         User.collection.drop()
                         .then(() => User.insertMany(users))
                         .then(() => {
-                            console.log("Done!");
+                            // console.log("Done!");
                             mongoose.disconnect();
                         })
                         .catch(err => {
