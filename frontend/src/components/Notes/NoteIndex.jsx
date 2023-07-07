@@ -3,7 +3,7 @@ import * as noteActions from '../../store/notes'
 
 export default function NoteIndex({recipe}) {
     const recipeId = recipe._id
-    const allNotes = useSelector(noteActions.getPostComments(recipeId))
+    const allNotes = useSelector(noteActions.getPostNotes(recipeId))
 
     return (
         <div className="note-item">
