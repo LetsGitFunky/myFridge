@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as noteActions from "../../store/notes"
+import NoteIndex from "./NoteIndex";
 
 
 const CreateNote = ({ recipe, showNoteForm, setShowNoteForm }) => {
@@ -49,7 +50,7 @@ const CreateNote = ({ recipe, showNoteForm, setShowNoteForm }) => {
                             <button className="create-new-note-button" >Leave Note</button>
                         </div>
                     </form>
-                    <div className="note-index">NOTE INDEX COMPONENT</div>
+                    <div className="note-index"><NoteIndex/></div>
                 </div>
             )}
         </div>
