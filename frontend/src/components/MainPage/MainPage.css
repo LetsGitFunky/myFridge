@@ -85,9 +85,11 @@
 .ingredients-container {
     flex: 1;
     max-height: 700px;
-    background-color: yellow;
+    background-color: #dafaef;
     min-width: 20%;
     max-width: 15%;
+    border-radius: 20px;
+    margin-right: 20px;
 }
 
 .gen-recipes-container {
@@ -96,6 +98,7 @@
     min-width: 450px;
     overflow: auto;
     margin-right: 200px;
+    border-radius: 20px;
 }
 
 footer {
