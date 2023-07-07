@@ -36,7 +36,7 @@ export default function IngredientsIndex() {
 
     return (
         <div className="recipe-index-wrapper">
-            <h1>My Ingredients:</h1>
+            <h1>Ingredients in myFridge:</h1>
             <form onSubmit={handleSubmit}>
                 {Array.isArray(ings) && ings.map((ingredient, i) => (
                     <div key={i}>
