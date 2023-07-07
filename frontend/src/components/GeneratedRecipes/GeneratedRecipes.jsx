@@ -15,7 +15,7 @@ export default function GeneratedRecipes() {
     if (!recipes) {
         return (
             <div>
-                <h1 id="loading-text">Loading...</h1>   
+                <h1 id="loading-text">Loading...</h1>
                 <img id="loading-image" src={chefloadingnew} />
             </div>
         )

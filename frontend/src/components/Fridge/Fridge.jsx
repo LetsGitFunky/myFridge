@@ -8,7 +8,7 @@ import './Fridge.css'
 export default function Fridge (userId) {
     const sessionUser = useSelector(state => state.session.user);
     // const userId = useSelector(state => state.session.user.id)
-    console.log(userId);
+    // console.log(userId);
     // const usersIngredients = useSelector(fetchIngredients(userId));
     const [ingredients, setIngredients] = useState("")
     // const [userIngredients, setUserIngredients] = useState("")
@@ -39,7 +39,7 @@ export default function Fridge (userId) {
     }
 
     const handleSubmit = async (event) => {
-        console.log(sessionUser)
+        // console.log(sessionUser)
         event.preventDefault();
         try {
             dispatch(createIngredient(sessionUser, ingredients));
