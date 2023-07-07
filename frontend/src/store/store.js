@@ -1,11 +1,12 @@
 // store/store.js
 
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
-import session from "./session";
-import errors from "./errors";
-import recipesReducer from "./recipes";
-import ingredientsReducer from "./ingredients";
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import session from './session';
+import errors from './errors';
+import recipesReducer from './recipes';
+import ingredientsReducer from './ingredients';
+import notesReducer from './notes';
 import savedRecipeReducer from "./savedRecipes";
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     errors,
     recipes: recipesReducer,
     ingredients: ingredientsReducer,
+    notes: notesReducer,
     savedRecipes: savedRecipeReducer,
 });
 
