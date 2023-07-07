@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import StepItem from "./StepItem";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe } from "../../store/savedRecipes";
@@ -8,6 +8,8 @@ import "./StepItem.css";
 export default function RecipeMainShow({ recipe }) {
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.session.user);
+    const [isSaved, setSaved] = useState(false);
+
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -22,6 +24,7 @@ export default function RecipeMainShow({ recipe }) {
         // debugger;
         // think i need to add user to this object
         dispatch(createRecipe(savedRecipe));
+        setSaved(true);
     };
 
     
@@ -33,7 +36,11 @@ export default function RecipeMainShow({ recipe }) {
                         <StepItem step={step} />
                     </li>
                 ))}
-                <button onClick={handleClick}>Save Recipe</button>
+                {!isSaved ? (
+            <button className="save-button" onClick={handleClick}>Save Recipe</button>
+            ) : (
+            <button id="saved-button" disabled>Saved</button>
+        )}
             </ul>
         </div>
     );
