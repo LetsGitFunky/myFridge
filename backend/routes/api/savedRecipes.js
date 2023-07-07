@@ -10,9 +10,13 @@ const validateRecipeInput = require("../../validations/recipes");
 /* GET savedRecipes listing. */
 router.get("/", requireUser, async (req, res) => {
     try {
-        const user = await User.findById(req.params.userId);
-        const savedRecipes = await SavedRecipe.find(user.id).populate("name"); // when getting all saved recipes all we want is the name of recipe to show... When clicked on will go to savedRecipe show wich will include the entire recipe object.
-        return res.json(savedRecipes);
+        const savedRecipes = await SavedRecipe.find({ user: req.user._id }); // finding all recipes for logged-in user
+        return res.json(savedRecipes.map(recipeObj => recipeObj.recipe[0]))
+        // const parsedRecipes = recipes.map(recipeObj => recipeObj.recipe[0])
+        // console.log(parsedRecipes)
+        // return parsedRecipes
+        // return res.json(savedRecipes);
+        // return parsedRecipes
     } catch (err) {
         return res.json([]);
     }
@@ -40,7 +44,7 @@ router.post(
     async (req, res, next) => {
         try {
             const newSavedRecipe = new SavedRecipe({
-                user: req.params.userId,
+                user: req.user._id,
                 name: req.body.name,
                 recipe: req.body,
             });

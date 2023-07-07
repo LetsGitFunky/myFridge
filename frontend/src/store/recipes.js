@@ -53,7 +53,21 @@ export const fetchRecipes = ingredients => async dispatch => {
     }
 };
 
+export const fetchSavedRecipes = () => async (dispatch) => {
+    const res = await jwtFetch(`/api/savedRecipes`);
+
+    if (res.ok) {
+        debugger
+        const savedRecipes = await res.json();
+        dispatch(receiveRecipes(savedRecipes));
+    }
+};
+
+
+
+
 export const createRecipe = (Recipe) => async (dispatch) => {
+    debugger
     const res = await jwtFetch(`/api/savedRecipes/`, {
         method: "POST",
         header: {
@@ -63,6 +77,7 @@ export const createRecipe = (Recipe) => async (dispatch) => {
     });
 
     if (res.ok) {
+        // TODO: recipe is undefined  need to unest it
         const recipe = await res.json();
         debugger
         dispatch(receiveRecipes(recipe));
@@ -78,7 +93,7 @@ export default function recipesReducer(state = {}, action) {
     switch (action.type) {
         case RECEIVE_RECIPES:
             return action.recipes;
-        case RECEIVE_RECIPE:
+        case RECEIVE_RECIPE:  // 
             newState = {...state};
             const recipeId = action.recipe.id;
             newState[recipeId] = action.recipe;
