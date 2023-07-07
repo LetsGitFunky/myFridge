@@ -24,7 +24,7 @@ function NavBar () {
                 <div className="links-nav">
                     <NavLink className="nav-button" exact to={'/'}>myFridge</NavLink>
                     <NavLink className="nav-button" exact to={'/saved'}>Saved Recipes</NavLink>
-);
+
                     <button className="nav-button" id="logout-button" onClick={logoutUser}>Logout</button>
                 </div>
             );

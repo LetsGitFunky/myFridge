@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients, deleteIngredient } from "../../store/ingredients";
 import { fetchRecipes } from "../../store/recipes"
+import './IngredientsIndex.css'
 
 
 export default function IngredientsIndex() {
@@ -44,7 +45,7 @@ export default function IngredientsIndex() {
 
     return (
         <div className="recipe-index-wrapper">
-            <h1>Ingredients in myFridge:</h1>
+            <h1 id='ingredients-title'>Ingredients in myFridge:</h1>
             <form onSubmit={handleSubmit}>
             {Array.isArray(ings) && ings.map((ingredient, i) => (
                     <div key={i}>
@@ -56,8 +57,8 @@ export default function IngredientsIndex() {
                         <label>{ingredient.name}</label>
                     </div>
                 ))}
-                <button type="submit">Generate Recipes</button>
-                <button onClick={handleDelete}>Remove from Fridge</button>
+                <button id="generate-recipes-button" type="submit">Generate Recipes</button>
+                <button id="delete-ingredients-button" onClick={handleDelete}>Remove from Fridge</button>
             </form>
         </div>
     )
