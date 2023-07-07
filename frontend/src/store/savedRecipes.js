@@ -5,10 +5,10 @@ export const RECIEVE_SAVED_RECIPE = "savedrecipes/RECIEVE_SAVED_RECIPE";
 export const REMOVE_SAVED_RECIPE = "savedrecipes/REMOVE_SAVED_RECIPE";
 
 // all saved recipes
-export const recieveSavedRecipes = (recipes) => {
+export const recieveSavedRecipes = (savedRecipes) => {
     return {
         type: RECIEVE_SAVED_RECIPES,
-        recipes: recipes,
+        savedRecipes
     };
 };
 
@@ -32,12 +32,12 @@ export const removeSavedRecipe = (savedRecipeId) => {
 
 // GET request for saved recipe index
 export const fetchSavedRecipes = () => async (dispatch) => {
-    // debugger
+    debugger
     const res = await jwtFetch(`/api/savedRecipes`);
 
     if (res.ok) {
-        // debugger;
         const savedRecipes = await res.json();
+        debugger;
         dispatch(recieveSavedRecipes(savedRecipes));
     }
 };
@@ -80,7 +80,7 @@ const savedRecipeReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECIEVE_SAVED_RECIPES:
-            return action.recipes;
+            return action.savedRecipes;
         case RECIEVE_SAVED_RECIPE:
         // newstate = {...state}
         // return {...

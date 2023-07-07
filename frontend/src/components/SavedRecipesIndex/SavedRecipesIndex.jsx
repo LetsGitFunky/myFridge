@@ -11,7 +11,7 @@ export default function SavedRecipesIndex() {
 
     useEffect(() => {
         dispatch(fetchSavedRecipes())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
