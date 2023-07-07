@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { useDispatch } from "react-redux";
+import { deleteSavedRecipe } from "../../store/savedRecipes";
+
 const SavedRecipeIndexItem = ({ recipe, onRecipeSelect }) => {
     const dispatch = useDispatch();
 
@@ -12,6 +15,7 @@ const SavedRecipeIndexItem = ({ recipe, onRecipeSelect }) => {
     return (
         <div onClick={() => onRecipeSelect(recipe)}>
             <h2>{recipe.name}</h2>
+            <button onClick={handleSubmit}>Delete Recipe</button>
         </div>
     );
 };
