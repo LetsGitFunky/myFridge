@@ -6,6 +6,7 @@ import './MainPage.css'
 import tanfridgecropped from './Images/tanfridgecropped.png'
 import GeneratedRecipes from "../GeneratedRecipes/GeneratedRecipes";
 import {AiFillGithub} from 'react-icons/ai';
+import IngredientsIndex from "../IngredientsIndex/IngredientsIndex";
 
 function MainPage() {
     return (
@@ -21,7 +22,7 @@ function MainPage() {
                 </div>
                 </div>
             <div className='ingredients-container'>
-                INGREDIENTS INDEX COMPONENT
+                {/* <IngredientsIndex/> */}
             </div>
             <div className='gen-recipes-container'>
                 <GeneratedRecipes/>

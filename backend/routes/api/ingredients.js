@@ -17,7 +17,7 @@ router.get('/:userId', requireUser, async (req, res) => {
         if (!user.fridge) {
             return res.json([]); // set fridge to empty array if it's null
         }
-        const ingredients = user.fridge.map((item) => item.ingredient);
+        const ingredients = user.fridge.map((item) => item.name);
 
     return res.json(ingredients);
     } catch (err) {
