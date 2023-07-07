@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-const { faker } = require('@faker-js/faker');
+// const { faker } = require('@faker-js/faker');
 require('dotenv').config();
 
 // const NUM_SEED_USERS = 10;
