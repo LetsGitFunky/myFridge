@@ -63,7 +63,7 @@ export const createRecipe = (Recipe) => async (dispatch) => {
 
 // TODO:  adjust this as needed once the data flow is figured out aka the object
 export const deleteSavedRecipe = (savedRecipeId) => async (dispatch) => {
-    const res = await jwtFetch(`/api/savedRecipe/`, {
+    const res = await jwtFetch(`/api/savedRecipes/`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
