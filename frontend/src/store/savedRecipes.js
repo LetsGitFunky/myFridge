@@ -33,12 +33,12 @@ export const removeSavedRecipe = (savedRecipeId) => {
 
 // GET request for saved recipe index
 export const fetchSavedRecipes = () => async (dispatch) => {
-    debugger
+    // debugger
     const res = await jwtFetch(`/api/savedRecipes`);
 
     if (res.ok) {
+        // debugger;
         const savedRecipes = await res.json();
-        debugger;
         dispatch(recieveSavedRecipes(savedRecipes));
     }
 };
