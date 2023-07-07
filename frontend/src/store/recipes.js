@@ -12,12 +12,12 @@ const receiveRecipes = (recipes) => {
     }
 }
 
-const receiveRecipe = (recipe) => {
-    return {
-        type: RECEIVE_RECIPE,
-        recipe: recipe
-    }
-}
+// const receiveRecipe = (recipe) => {
+//     return {
+//         type: RECEIVE_RECIPE,
+//         recipe: recipe
+//     }
+// }
 
 //getRecipes and getRecipe selector helper functions
 export const getRecipe = (recipeId) => (state) => (
@@ -53,42 +53,16 @@ export const fetchRecipes = ingredients => async dispatch => {
     }
 };
 
-export const fetchSavedRecipes = () => async (dispatch) => {
-    const res = await jwtFetch(`/api/savedRecipes`);
-
-    if (res.ok) {
-        debugger
-        const savedRecipes = await res.json();
-        dispatch(receiveRecipes(savedRecipes));
-    }
-};
 
 
 
 
-export const createRecipe = (Recipe) => async (dispatch) => {
-    debugger
-    const res = await jwtFetch(`/api/savedRecipes/`, {
-        method: "POST",
-        header: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(Recipe),
-    });
-
-    if (res.ok) {
-        // TODO: recipe is undefined  need to unest it
-        const recipe = await res.json();
-        debugger
-        dispatch(receiveRecipes(recipe));
-    }
-};
 
 
 //Recipe Reducer
 export default function recipesReducer(state = {}, action) {
     let newState;
-    debugger
+    // debugger    
 
     switch (action.type) {
         case RECEIVE_RECIPES:

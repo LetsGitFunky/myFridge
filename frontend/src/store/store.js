@@ -7,21 +7,23 @@ import errors from './errors';
 import recipesReducer from './recipes';
 import ingredientsReducer from './ingredients';
 import notesReducer from './notes';
+import savedRecipeReducer from "./savedRecipes";
 
 const rootReducer = combineReducers({
     session,
     errors,
     recipes: recipesReducer,
     ingredients: ingredientsReducer,
-    notes: notesReducer
+    notes: notesReducer,
+    savedRecipes: savedRecipeReducer,
 });
 
 let enhancer;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
     enhancer = applyMiddleware(thunk);
 } else {
-    const logger = require('redux-logger').default;
+    const logger = require("redux-logger").default;
     const composeEnhancers =
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     enhancer = composeEnhancers(applyMiddleware(thunk, logger));

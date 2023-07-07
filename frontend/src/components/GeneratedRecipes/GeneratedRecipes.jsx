@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 // import RecipeShow from "../RecipeShow/RecipeShow"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import RecipeMainShow from "../RecipeShow/RecipeShow";
 import './GeneratedRecipes.css'
 import newnewchef from './Images/newnewchef.png'
