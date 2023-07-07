@@ -22,7 +22,7 @@ function MainPage() {
                 </div>
                 </div>
             <div className='ingredients-container'>
-                {/* <IngredientsIndex/> */}
+                <IngredientsIndex/>
             </div>
             <div className='gen-recipes-container'>
                 <GeneratedRecipes/>
