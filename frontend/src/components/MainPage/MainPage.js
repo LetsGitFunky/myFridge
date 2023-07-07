@@ -18,7 +18,7 @@ function MainPage() {
                     <RecipeGeneratorForm />
                 </div>
                 <div className="overlay-div2">
-                     {/* <IngredientsForm /> */}
+                        <Fridge />
                 </div>
                 </div>
             <div className='ingredients-container'>
