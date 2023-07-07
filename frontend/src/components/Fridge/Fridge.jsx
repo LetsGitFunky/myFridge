@@ -27,7 +27,7 @@ export default function Fridge (userId) {
         <div className="fridge-wrapper">
             <div className="add-to-fridge-form-wrapper">
                 <form className="add-to-fridge-form" onSubmit={handleSubmit}>
-                    <label id="add-ingredients-fridge-label">Add ingredients:</label>
+                    <label id="add-ingredients-fridge-label">Add ingredient:</label>
                     <input className="input-fridge-form"
                         type="text"
                         id="ingredients"

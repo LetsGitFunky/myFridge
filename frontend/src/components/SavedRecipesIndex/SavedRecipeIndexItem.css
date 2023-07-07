@@ -38,3 +38,8 @@
     border: 2px solid #fa5e25;
     margin-top: 5px;
 }
+
+.item-wrapper {
+    display: flex;
+    align-items: center;
+}
