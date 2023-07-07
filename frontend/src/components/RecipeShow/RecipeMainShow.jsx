@@ -1,7 +1,7 @@
 import React from "react";
 import StepItem from "./StepItem";
 import { useDispatch, useSelector } from "react-redux";
-import { createRecipe } from "../../store/recipes";
+import { createRecipe } from "../../store/savedRecipes";
 
 import "./StepItem.css";
 

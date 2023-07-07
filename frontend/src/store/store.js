@@ -6,12 +6,15 @@ import session from './session';
 import errors from './errors';
 import recipesReducer from './recipes';
 import ingredientsReducer from './ingredients';
+import savedRecipeReducer from "./savedRecipes";
 
 const rootReducer = combineReducers({
     session,
     errors,
     recipes: recipesReducer,
-    ingredients: ingredientsReducer
+    ingredients: ingredientsReducer,
+    savedRecipes: savedRecipeReducer,
+
 });
 
 let enhancer;
