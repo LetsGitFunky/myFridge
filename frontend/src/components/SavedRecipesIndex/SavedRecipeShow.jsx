@@ -1,4 +1,5 @@
 import React from 'react';
+import './SavedRecipeShow.css';
 
 const SavedRecipeShow = ({ recipe }) => {
     return (
@@ -13,7 +14,7 @@ const SavedRecipeShow = ({ recipe }) => {
             <h3>Instructions</h3>
             <ol>
                 {recipe.instructions.map((instruction, index) => (
-                    <li key={index}>{instruction.description}</li>
+                    <li key={index}>{instruction.step}. {instruction.description}</li>
                 ))}
             </ol>
         </div>
