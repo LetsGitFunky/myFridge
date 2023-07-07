@@ -14,9 +14,11 @@ const SavedRecipeIndexItem = ({ recipe, onRecipeSelect }) => {
     };
 
     return (
+        <div className='item-wrapper'>
         <div className="saved-recipe-index-item" onClick={() => onRecipeSelect(recipe)}>
             <h2>{recipe.name}</h2>
-            <button id="delete-rec-button" onClick={handleSubmit}>Delete Recipe</button>
+        </div>
+            <button id="delete-rec-button" onClick={handleSubmit}>Delete</button>
         </div>
     );
 };
