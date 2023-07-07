@@ -1,0 +1,11 @@
+.saved-recipes-container {
+    display: flex;
+}
+
+.recipe-index {
+    width: 50%;
+}
+
+.recipe-show {
+    width: 50%;
+}
