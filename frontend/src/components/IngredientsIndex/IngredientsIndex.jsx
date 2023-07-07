@@ -1,7 +1,7 @@
 import React  from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIngredients } from "../../store/ingredients";
+import { fetchIngredients, deleteIngredient } from "../../store/ingredients";
 import { fetchRecipes } from "../../store/recipes"
 
 
@@ -33,6 +33,14 @@ export default function IngredientsIndex() {
         // Call fetchRecipes here with selectedIngredients as parameter
         dispatch(fetchRecipes(selectedIngredients));
     };
+
+    const handleDelete = async (event) => {
+        event.preventDefault();
+        // Call deleteIngredient here with each selected ingredient as parameter
+        selectedIngredients.forEach(ingredient => {
+            dispatch(deleteIngredient(ingredient));
+        });
+    }
 
     return (
         <div className="recipe-index-wrapper">
