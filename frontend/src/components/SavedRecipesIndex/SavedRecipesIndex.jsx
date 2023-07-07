@@ -1,24 +1,17 @@
 import React, { useEffect } from "react";
-// import {  useDispatch, useSelector } from "react-redux";
-import { fetchSavedRecipes } from "../../store/recipes";
-
+import {  useDispatch, useSelector } from "react-redux";
+import { fetchSavedRecipes } from "../../store/savedRecipes";
 
 import Fridge from "../Fridge/Fridge";
-import { useDispatch, useSelector } from "react-redux";
-
 
 export default function SavedRecipesIndex() {
     const dispatch = useDispatch();
 
-
-    const savedRecipes = useSelector((state) => state.recipes)
+    const savedRecipes = useSelector((state) => state.savedRecipes)
 
     useEffect(() => {
         dispatch(fetchSavedRecipes())
     }, [])
-    
-
-
 
     return (
         <div>
