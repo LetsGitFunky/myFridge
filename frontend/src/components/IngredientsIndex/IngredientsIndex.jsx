@@ -12,6 +12,8 @@ export default function IngredientsIndex() {
     const dispatch = useDispatch();
     const ings = useSelector(state => state.ingredients) || [];
     const [selectedIngredients, setSelectedIngredients] = useState([]);
+    const [selectedIngredientNames, setSelectedIngredientNames] = useState([]);
+
 
 
     useEffect(() => {
@@ -20,20 +22,25 @@ export default function IngredientsIndex() {
 
     const handleInputChange = (event) => {
         const target = event.target;
-        const value = target.name;  // this is now the ingredient's _id
+        const ingId = target.name;  // this is now the ingredient's _id
+        const ingName = target.value;  // this is now the ingredient's name
 
         if(target.checked){
-            setSelectedIngredients(prevIngredients => [...prevIngredients, value])
+            setSelectedIngredients(prevIngredients => [...prevIngredients, ingId]);
+            setSelectedIngredientNames(prevNames => [...prevNames, ingName]);
         } else {
-            setSelectedIngredients(prevIngredients => prevIngredients.filter(ingredientId => ingredientId !== value))
+            setSelectedIngredients(prevIngredients => prevIngredients.filter(ingredientId => ingredientId !== ingId));
+            setSelectedIngredientNames(prevNames => prevNames.filter(ingredientName => ingredientName !== ingName));
         }
-    }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // Call fetchRecipes here with selectedIngredients as parameter
-        dispatch(fetchRecipes(selectedIngredients));
+        // Convert the array of ingredient names to a string
+        const ingredientsString = selectedIngredientNames.join(", ");
+        dispatch(fetchRecipes(ingredientsString));
     };
+
 
     const handleDelete = async (event) => {
         event.preventDefault();
@@ -50,10 +57,11 @@ export default function IngredientsIndex() {
             {Array.isArray(ings) && ings.map((ingredient, i) => (
                     <div key={i}>
                         <input
-                            name={ingredient._id}  // use _id as the name
-                            type="checkbox"
-                            onChange={handleInputChange}
-                        />
+                        name={ingredient._id}  // use _id as the name
+                        value={ingredient.name}  // use name as the value
+                        type="checkbox"
+                        onChange={handleInputChange}
+                    />
                         <label>{ingredient.name}</label>
                     </div>
                 ))}

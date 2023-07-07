@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const openai = axios.create({
     baseURL: "https://api.openai.com",
-    timeout: 10000,
+    timeout: 15000,
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
@@ -25,5 +25,13 @@ exports.generateRecipe = async (ingredients) => {
         n: 3,
     });
 
-    return response.data.choices.map(choice => JSON.parse(choice.message.content));
+    // return response.data.choices.map(choice => JSON.parse(choice.message.content));
+    return response.data.choices.map(choice => {
+        try {
+            return JSON.parse(choice.message.content);
+        } catch (err) {
+            console.error('Failed to parse JSON: ', choice.message.content);
+            return null;
+        }
+    }).filter(recipe => recipe !== null);  // Filter out null results
 };
