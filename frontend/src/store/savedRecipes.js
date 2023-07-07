@@ -73,6 +73,7 @@ export const deleteSavedRecipe = (savedRecipeId) => async (dispatch) => {
 
     if (res.ok) {
         dispatch(removeSavedRecipe(savedRecipeId));
+        return 
     }
 };
 
