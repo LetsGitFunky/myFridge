@@ -11,6 +11,7 @@ export default function GeneratedRecipes() {
     const [activeRecipe, setActiveRecipe] = useState(null);
     const recipes = useSelector(state => state.recipes.recipe);
 
+
     if (!recipes) {
         return <h1>Loading...</h1>;
     }

@@ -11,12 +11,14 @@ const validateRecipeInput = require("../../validations/recipes");
 router.get("/", requireUser, async (req, res) => {
     try {
         const savedRecipes = await SavedRecipe.find({ user: req.user._id }); // finding all recipes for logged-in user
-        return res.json(savedRecipes.map(recipeObj => recipeObj.recipe[0]))
+        console.log(savedRecipes.recipe);
+        return res.json(savedRecipes.map((recipeObj) => recipeObj.recipe[0]));
         // const parsedRecipes = recipes.map(recipeObj => recipeObj.recipe[0])
         // console.log(parsedRecipes)
         // return parsedRecipes
         // return res.json(savedRecipes);
         // return parsedRecipes
+        // return res.json(savedRecipes)
     } catch (err) {
         return res.json([]);
     }
@@ -37,26 +39,21 @@ router.get("/:savedRecipeId", requireUser, async (req, res, next) => {
     }
 });
 
-router.post(
-    "/",
-    requireUser,
-    validateRecipeInput,
-    async (req, res, next) => {
-        try {
-            const newSavedRecipe = new SavedRecipe({
-                user: req.user._id,
-                name: req.body.name,
-                recipe: req.body,
-            });
+router.post("/", requireUser, validateRecipeInput, async (req, res, next) => {
+    try {
+        const newSavedRecipe = new SavedRecipe({
+            user: req.user._id,
+            recipe: req.body,
+        });
 
-            let savedRecipe = await newSavedRecipe.save();
-            savedRecipe = await savedRecipe.populate("name");
-            return res.json(savedRecipe);
-        } catch (err) {
-            next(err);
-        }
+        let savedRecipe = await newSavedRecipe.save();
+        // savedRecipe = await savedRecipe.populate("name");
+        console.log(savedRecipe);
+        return res.json(savedRecipe);
+    } catch (err) {
+        next(err);
     }
-);
+});
 
 router.delete("/:savedRecipeId", requireUser, async (req, res, next) => {
     try {
