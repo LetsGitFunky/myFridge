@@ -1,4 +1,3 @@
-
 import jwtFetch from "./jwt";
 
 export const RECIEVE_SAVED_RECIPES = "savedrecipes/RECIEVE_SAVED_RECIPES";
@@ -6,10 +5,10 @@ export const RECIEVE_SAVED_RECIPE = "savedrecipes/RECIEVE_SAVED_RECIPE";
 export const REMOVE_SAVED_RECIPE = "savedrecipes/REMOVE_SAVED_RECIPE";
 
 // all saved recipes
-export const recieveSavedRecipes = (savedRecipes) => {
+export const recieveSavedRecipes = (recipes) => {
     return {
         type: RECIEVE_SAVED_RECIPES,
-        savedRecipes
+        recipes: recipes,
     };
 };
 
@@ -21,7 +20,7 @@ export const recieveSavedRecipe = (recipe) => {
     };
 };
 
-// TODO: there is no savedrecipe id 
+// TODO: there is no savedrecipe id
 export const removeSavedRecipe = (savedRecipeId) => {
     return {
         type: REMOVE_SAVED_RECIPE,
@@ -62,11 +61,14 @@ export const createRecipe = (Recipe) => async (dispatch) => {
     }
 };
 
-
- // TODO:  adjust this as needed once the data flow is figured out aka the object
+// TODO:  adjust this as needed once the data flow is figured out aka the object
 export const deleteSavedRecipe = (savedRecipeId) => async (dispatch) => {
-    const res = await jwtFetch(`/api/savedRecipe/${savedRecipeId}`, {
+    const res = await jwtFetch(`/api/savedRecipe/`, {
         method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ savedRecipeId }),
     });
 
     if (res.ok) {
@@ -81,10 +83,10 @@ const savedRecipeReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECIEVE_SAVED_RECIPES:
-            return action.savedRecipes;
+            return action.recipes;
         case RECIEVE_SAVED_RECIPE:
-        // newstate = {...state}
-        // return {...
+            // newstate = {...state}
+            // return {...
             return state;
         case REMOVE_SAVED_RECIPE:
             // TODO: check state or comment out
