@@ -11,14 +11,13 @@ const validateRecipeInput = require("../../validations/recipes");
 router.get("/", requireUser, async (req, res) => {
     try {
         const savedRecipes = await SavedRecipe.find({ user: req.user._id }); // finding all recipes for logged-in user
-        console.log(savedRecipes.recipe);
-        return res.json(savedRecipes.map((recipeObj) => recipeObj.recipe[0]));
-        // const parsedRecipes = recipes.map(recipeObj => recipeObj.recipe[0])
-        // console.log(parsedRecipes)
-        // return parsedRecipes
-        // return res.json(savedRecipes);
-        // return parsedRecipes
-        // return res.json(savedRecipes)
+        // Convert array to object
+        const savedRecipesObject = savedRecipes.reduce((obj, recipe) => {
+            obj[recipe._id] = recipe.recipe;  // Access the inner recipe object here
+            return obj;
+        }, {});
+
+        return res.json(savedRecipesObject);
     } catch (err) {
         return res.json([]);
     }
