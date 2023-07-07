@@ -20,10 +20,10 @@
     width: 50%;
     position: absolute; 
     top: 50%; 
-    left: 15%; 
+    left: 19.5%; 
     width: 30%;
     transform: translateY(-50%); 
-    max-width: 350px; 
+    max-width: 215px; 
     max-height: 410px;
     /* background-color: rgba(255, 255, 111, 0.491); */
     border-radius: 20px;
