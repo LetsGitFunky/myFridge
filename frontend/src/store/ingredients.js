@@ -37,24 +37,39 @@ export const getIngredients = (state) => (
 
 // thunk action creators
 
-export const fetchIngredients = ingredients => async dispatch => {
-    console.log({...ingredients}, "top of fetchIngredients")  // ingredients = {ingredients: eggs}
+export const fetchIngredients = userId => async (dispatch) => {
+    try {
+        const response = await jwtFetch(`/api/ingredients/${userId}`);
+    
+        if (response.ok) {
+            const ingredients = await response.json();
+            dispatch(receiveIngredients(ingredients));
+        } else {
+            throw new Error('Failed to fetch ingredients');
+        }
+        } catch (error) {
+        console.error('Error fetching ingredients:', error);
+        // You can dispatch an error action or handle the error in another way, if needed
+        }
+};
+
+export const createIngredient = (user, ingredient) => async dispatch => {
+
     try {
         const response = await jwtFetch('/api/ingredients', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name: ingredients})
+            body: JSON.stringify({user: user, name: ingredient})
         });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log({data}, "before dispatch")
         dispatch(receiveIngredients(data));
     } catch (err) {
-        dispatch({ type: 'FETCH_ingredients_FAILURE', payload: err.message });
+        dispatch({ type: 'CREATE_ingredients_FAILURE', payload: err.message });
     }
 };
 
@@ -70,7 +85,7 @@ export const deleteIngredient = ingredientId => async (dispatch) => {
 
 
 //ingredient Reducer
-export default function ingredientsReducer(state = {}, action) {
+export default function ingredientsReducer(state = [], action) {
     let nextState;
 
     switch (action.type) {

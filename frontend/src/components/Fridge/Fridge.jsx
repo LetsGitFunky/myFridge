@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { fetchIngredients, getIngredients } from "../../store/ingredients";
+import React  from "react";
+import { useState, useEffect } from "react";
+import { createIngredient, fetchIngredients, getIngredients } from "../../store/ingredients";
 import { useDispatch, useSelector } from "react-redux";
+import './Fridge.css'
+// import { useParams } from 'react-router-dom';
 
-export default function Fridge () {
-    const sessionIngredients = useSelector(getIngredients);
-
+export default function Fridge (userId) {
+    const sessionUser = useSelector(state => state.session.user);
     const [ingredients, setIngredients] = useState("")
     const dispatch = useDispatch();
 
@@ -15,7 +17,7 @@ export default function Fridge () {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            dispatch(fetchIngredients(ingredients));
+            dispatch(createIngredient(sessionUser, ingredients));
         } catch (error) {
             console.error("Error saving ingredients:", error);
         }
@@ -25,23 +27,16 @@ export default function Fridge () {
         <div className="fridge-wrapper">
             <div className="add-to-fridge-form-wrapper">
                 <form className="add-to-fridge-form" onSubmit={handleSubmit}>
-                <label className="add-ingredients-fridge-label">Ingredients:</label>
-                <input
-                    type="text"
-                    id="ingredients"
-                    name="ingredients"
-                    value={ingredients}
-                    onChange={handleInputChange}
-                />
-                <button className="add-to-fridge-button" type="submit">Add to myFridge!</button>
-            </form>
-                <div className="ingredients-list-wrapper">
-                    <ul className="fridge-ingredients-list">
-                        {sessionIngredients.map(ing => {
-                            <li>{ing}</li>
-                        })}
-                    </ul>
-                </div>
+                    <label id="add-ingredients-fridge-label">Add ingredients:</label>
+                    <input className="input-fridge-form"
+                        type="text"
+                        id="ingredients"
+                        name="ingredients"
+                        value={ingredients}
+                        onChange={handleInputChange}
+                    />
+                    <button className="add-to-fridge-button" type="submit">Add to myFridge!</button>
+                </form>
             </div>
         </div>
     )

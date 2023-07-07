@@ -11,13 +11,15 @@ const User = require("../../models/User");
 const Ingredient = require("../../models/Ingredient");
 
 //  find the current user and grab their fridge - which is all the ingredients
-router.get("/", requireUser, async (req, res) => {
+router.get('/:userId', requireUser, async (req, res) => {
     try {
         const user = await User.findById(req.user._id).populate("fridge");
         if (!user.fridge) {
-            user.fridge = []; // set fridge to empty array if it's null
+            return res.json([]); // set fridge to empty array if it's null
         }
-        return res.json(user.fridge);
+        const ingredients = user.fridge.map((item) => item.name);
+
+    return res.json(ingredients);
     } catch (err) {
         res.status(500).json({ message: "Server error" });
     }

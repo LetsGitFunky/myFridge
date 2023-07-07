@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    height: 50px;
+    height: 4rem;
     left: 0;
     position: fixed;
     right: 0;
@@ -30,8 +30,8 @@
     color: #87CEEB;
     -webkit-text-stroke: 1px #6495ED;
     margin-left: 5%;
-    margin-top: 16%;
-    font-size: 1.5rem;
+    margin-top: 13%;
+    font-size: 2rem;
 }
 
 .links-nav, .links-auth {
@@ -40,7 +40,7 @@
     gap: 5px;
     right: auto;
     top: auto;
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
 .nav-button {
@@ -49,8 +49,8 @@
     margin-bottom: 10px;
     margin-right: 10px;
     background-color: #87CEEB;
+    font-size: 1.2rem;
     font-weight: bold;
-    font-size: 15px;
     font-family: 'Itim', cursive;
     color: white;
     border-radius: 20px;
@@ -76,7 +76,7 @@
     margin-right: 10px;
     background-color: #87CEEB;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 1.2rem;
     color: white;
     text-decoration: none;
     border-radius: 20px;
@@ -96,9 +96,9 @@
 }
 
 #tagline-nav {
-    margin-top: 17%;
+    margin-top: 14%;
     margin-left: 3%;
-    font-size: 1rem;
+    font-size: 1.2rem;
     white-space: nowrap;
     /* overflow: hidden; */
     text-overflow: ellipsis;

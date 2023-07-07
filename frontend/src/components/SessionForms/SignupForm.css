@@ -16,27 +16,30 @@
 form span {
     color: #FF7F50;
     font-family: 'Itim', cursive;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 #signup-title-text {
     color: #87CEEB;
     margin-bottom: 30px;
-    font-size: 50px;
+    font-size: 4rem;
     font-style: bold;
-    -webkit-text-stroke: 0.1px #6495ED;
+    -webkit-text-stroke: 0.12rem #6495ED;
     max-width: 300px;
 }
 
 p {
     color: #00ac84;
     max-width: 200px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
 }
 
 form input {
     font-family: 'Itim', cursive;
-    font-size: 15px;
+    font-size: 1.5rem;
     border: 1px solid lightgray;
+    border-radius: 5px;
 }
 
 form input::placeholder {

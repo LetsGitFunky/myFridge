@@ -1,7 +1,11 @@
 .outer-container {
-    max-width: fit-content;
     position: relative;
     margin-top: 8%;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fridge-img-container {
@@ -10,18 +14,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: 100%;
-}
+    max-height: 90%;
+} 
 
 .fridge-img-container img {
     max-height: 600px;
-    min-height: 500px;
+    min-height: 105%;
     object-fit: contain;
 }
 
 .mainpage-container {
     position: relative;
     display: flex;
+    margin-top: 5%;
+    width: 1100px; 
+    height: 800px;
 }
 
 .overlay-div1 {
@@ -30,8 +37,8 @@
     left: 5%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    width: 228px;
-    height: 187px;
+    width: 290px;
+    height: 252px;
     z-index: 2;
     box-shadow: 0 0 0 3px transparent; 
     transition: box-shadow 0.3s ease-in-out; 
@@ -45,13 +52,13 @@
 
 .overlay-div2 {
     position: absolute;
-    top: 77%;
-    left: 73.5%;
+    top: 78.5%;
+    left: 73.3%;
     transform: translate(-50%, -50%);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    width: 231px;
-    height: 193px;
+    width: 290px;
+    height: 245px;
     z-index: 2;
     box-shadow: 0 0 0 3px transparent; 
     transition: box-shadow 0.3s ease-in-out;
@@ -77,17 +84,18 @@
 
 .ingredients-container {
     flex: 1;
-    max-height: 600px;
+    max-height: 700px;
     background-color: yellow;
-    min-width: 15%;
+    min-width: 20%;
     max-width: 15%;
 }
 
 .gen-recipes-container {
-    max-height: 600px;
+    max-height: 700px;
     background-color: #caf0ff;
-    min-width: 30%;
+    min-width: 450px;
     overflow: auto;
+    margin-right: 200px;
 }
 
 footer {
@@ -96,7 +104,7 @@ footer {
     justify-content: center;
     margin-top: 5px;
     font-size: 1.3rem;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 .footer-text {
@@ -117,7 +125,7 @@ footer {
 }
 
 .github-icon:hover {
-    color: #00ac84; /* Change the color on hover to the desired color */
+    color: #00ac84;
 }
 
 footer {
@@ -126,7 +134,7 @@ footer {
     justify-content: center;
     margin-top: 5px;
     font-size: 1.3rem;
-    margin-bottom: 10px;
+    margin-bottom: 500%;
 }
 
 .footer-text {
@@ -142,7 +150,7 @@ footer {
 
 .github-icon {
     margin-left: 5px;
-    font-size: 30px;
+    font-size: 2rem;
     transition: color 0.1s ease-in-out;
 }
 
