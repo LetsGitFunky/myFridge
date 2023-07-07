@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const passport = require("passport");
-const { loginUser, restoreUser, requireUser } = require("../../config/passport");
+const { loginUser, restoreUser } = require("../../config/passport");
 const { isProduction } = require("../../config/keys");
 const validateRegisterInput = require("../../validations/register");
 const validateLoginInput = require("../../validations/login");
@@ -22,7 +22,7 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
     // username.
     const user = await User.findOne({
         // $or: [{ email: req.body.email }, { username: req.body.username }],
-        $or: [{ email: req.body.email }]
+        $or: [{ email: req.body.email }],
     });
 
     if (user) {
@@ -76,6 +76,7 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
     })(req, res, next);
 });
 
+//  GET  /api/users/current
 router.get("/current", restoreUser, (req, res) => {
     if (!isProduction) {
         // In development, allow React server to gain access to the CSRF token
@@ -91,18 +92,5 @@ router.get("/current", restoreUser, (req, res) => {
         email: req.user.email,
     });
 });
-
-// GET /api/users/:id/fridge - Retrieve all ingredients for the user's fridge
-router.get("/:id/fridge", requireUser, async (req, res) => {
-  try {
-      const user = await User.findById(req.params.id).populate("fridge");
-      return res.json(user.fridge);
-  } 
-  catch (err) {
-      res.status(500).json({ message: "Server error" });
-  }
-});
-
-
 
 module.exports = router;

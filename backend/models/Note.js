@@ -8,13 +8,11 @@ const noteSchema = new Schema({
         ref: 'User',
         required: true
     },
-    recipe: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Recipe',
-            required: true
-        }
-    ],
+    recipe: {
+        type: Schema.Types.ObjectId,
+        ref: 'Recipe',
+        required: true
+    },
     body: {
         type: String,
         required: true
@@ -23,4 +21,4 @@ const noteSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('SavedRecipe', savedRecipeSchema);
+module.exports = mongoose.model('Note', noteSchema);
