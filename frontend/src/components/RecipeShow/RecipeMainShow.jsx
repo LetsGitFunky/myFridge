@@ -19,7 +19,7 @@ export default function RecipeMainShow({ recipe }) {
 
             ...recipe,
         };
-        debugger;
+        // debugger;
         // think i need to add user to this object
         dispatch(createRecipe(savedRecipe));
     };

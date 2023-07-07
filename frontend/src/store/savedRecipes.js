@@ -32,11 +32,11 @@ export const removeSavedRecipe = (savedRecipeId) => {
 
 // GET request for saved recipe index
 export const fetchSavedRecipes = () => async (dispatch) => {
-    debugger
+    // debugger
     const res = await jwtFetch(`/api/savedRecipes`);
 
     if (res.ok) {
-        debugger;
+        // debugger;
         const savedRecipes = await res.json();
         dispatch(recieveSavedRecipes(savedRecipes));
     }
@@ -44,7 +44,7 @@ export const fetchSavedRecipes = () => async (dispatch) => {
 
 // POST to saved recipes
 export const createRecipe = (Recipe) => async (dispatch) => {
-    debugger;
+    // debugger;
     const res = await jwtFetch(`/api/savedRecipes/`, {
         method: "POST",
         header: {
@@ -56,7 +56,7 @@ export const createRecipe = (Recipe) => async (dispatch) => {
     if (res.ok) {
         // TODO: recipe is undefined  need to unest it
         const recipe = await res.json();
-        debugger;
+        // debugger;
         dispatch(recieveSavedRecipe(recipe));
     }
 };
