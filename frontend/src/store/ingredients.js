@@ -85,7 +85,7 @@ export const deleteIngredient = ingredientId => async (dispatch) => {
 
 
 //ingredient Reducer
-export default function ingredientsReducer(state = {}, action) {
+export default function ingredientsReducer(state = [], action) {
     let nextState;
 
     switch (action.type) {

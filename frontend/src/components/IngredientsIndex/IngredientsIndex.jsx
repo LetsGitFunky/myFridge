@@ -9,19 +9,21 @@ export default function IngredientsIndex() {
     const [ingredients, setIngredients] = useState("")
     const dispatch = useDispatch();
     
-    const ings = useSelector(state => state.ingredients)
     useEffect(() => {
         setIngredients(dispatch(fetchIngredients(sessionUser._id)))
     }, [dispatch])
+    const ings = useSelector(state => state.ingredients)
     
     console.log(ings)
-    
-    return (
+    // debugger
+        return (
         <div className="recipe-index-wrapper">
-            {/* {ingredients} */}
                 {ings.map(ingredient => (
                 <li className="ingredient-item">{ingredient}</li>
                 ))}
         </div>
     )
+    
+    
+
 }
