@@ -6,24 +6,24 @@ import { fetchIngredients, getIngredients } from "../../store/ingredients";
 
 export default function IngredientsIndex() {
     const sessionUser = useSelector(state => state.session.user);
-    const [ingredients, setIngredients] = useState("")
+    // const [ingredients, setIngredients] = useState("")
     const dispatch = useDispatch();
-    
+    const ings = useSelector(state => state.ingredients) || [];
+
     useEffect(() => {
-        setIngredients(dispatch(fetchIngredients(sessionUser._id)))
-    }, [dispatch])
-    const ings = useSelector(state => state.ingredients)
-    
-    console.log(ings)
+        dispatch(fetchIngredients(sessionUser._id));
+    }, [dispatch, sessionUser._id, ings.length]);
+
+    // console.log(ings)
     // debugger
         return (
         <div className="recipe-index-wrapper">
-                {ings.map(ingredient => (
+                {Array.isArray(ings) && ings.map(ingredient => (
                 <li className="ingredient-item">{ingredient}</li>
                 ))}
         </div>
     )
-    
-    
+
+
 
 }
