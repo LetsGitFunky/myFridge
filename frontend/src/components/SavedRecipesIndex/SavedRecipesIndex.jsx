@@ -61,7 +61,7 @@ export default function SavedRecipesIndex() {
     return (
         <div className="saved-recipes-container">
             <div className="recipe-index">
-                <h1>My Saved Recipes</h1>
+                <h1 id= "my-saved-recipes-text" >My Saved Recipes</h1>
                 {Object.values(savedRecipes).map((recipe, index) => (
                     <SavedRecipeIndexItem key={`recipe-${index}`} recipe={recipe} onRecipeSelect={handleRecipeSelect} />
                 ))}

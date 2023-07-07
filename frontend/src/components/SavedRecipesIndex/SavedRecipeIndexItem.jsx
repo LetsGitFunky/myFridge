@@ -1,8 +1,9 @@
 import React from 'react';
+import './SavedRecipeIndexItem.css'
 
 const SavedRecipeIndexItem = ({ recipe, onRecipeSelect }) => {
     return (
-        <div onClick={() => onRecipeSelect(recipe)}>
+        <div className="saved-recipe-index-item" onClick={() => onRecipeSelect(recipe)}>
             <h2>{recipe.name}</h2>
         </div>
     );
