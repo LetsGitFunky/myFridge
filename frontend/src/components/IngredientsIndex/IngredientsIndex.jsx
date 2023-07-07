@@ -19,12 +19,12 @@ export default function IngredientsIndex() {
 
     const handleInputChange = (event) => {
         const target = event.target;
-        const value = target.name;
+        const value = target.name;  // this is now the ingredient's _id
 
         if(target.checked){
             setSelectedIngredients(prevIngredients => [...prevIngredients, value])
         } else {
-            setSelectedIngredients(prevIngredients => prevIngredients.filter(ingredient => ingredient !== value))
+            setSelectedIngredients(prevIngredients => prevIngredients.filter(ingredientId => ingredientId !== value))
         }
     }
 
@@ -36,9 +36,9 @@ export default function IngredientsIndex() {
 
     const handleDelete = async (event) => {
         event.preventDefault();
-        // Call deleteIngredient here with each selected ingredient as parameter
-        selectedIngredients.forEach(ingredient => {
-            dispatch(deleteIngredient(ingredient));
+        // Call deleteIngredient here with each selected ingredient's _id as parameter
+        selectedIngredients.forEach(ingredientId => {
+            dispatch(deleteIngredient(ingredientId));
         });
     }
 
@@ -46,17 +46,18 @@ export default function IngredientsIndex() {
         <div className="recipe-index-wrapper">
             <h1>Ingredients in myFridge:</h1>
             <form onSubmit={handleSubmit}>
-                {Array.isArray(ings) && ings.map((ingredient, i) => (
+            {Array.isArray(ings) && ings.map((ingredient, i) => (
                     <div key={i}>
                         <input
-                            name={ingredient}
+                            name={ingredient._id}  // use _id as the name
                             type="checkbox"
                             onChange={handleInputChange}
                         />
-                        <label>{ingredient}</label>
+                        <label>{ingredient.name}</label>
                     </div>
                 ))}
                 <button type="submit">Generate Recipes</button>
+                <button onClick={handleDelete}>Remove from Fridge</button>
             </form>
         </div>
     )
