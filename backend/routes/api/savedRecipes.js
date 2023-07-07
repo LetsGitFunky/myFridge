@@ -47,7 +47,7 @@ router.post("/", requireUser, validateRecipeInput, async (req, res, next) => {
 
         let savedRecipe = await newSavedRecipe.save();
         // savedRecipe = await savedRecipe.populate("name");
-        // console.log(savedRecipe);
+        console.log(savedRecipe);
         return res.json(savedRecipe);
     } catch (err) {
         next(err);
@@ -58,7 +58,6 @@ router.delete("/", requireUser, async (req, res, next) => {
     try {
         const savedRecipeId = req.body.savedRecipeId;
         await SavedRecipe.findByIdAndDelete(savedRecipeId);
-        // debugger
         res.json({ message: "Recipe deleted successfully!" });
     } catch (err) {
         next(err);

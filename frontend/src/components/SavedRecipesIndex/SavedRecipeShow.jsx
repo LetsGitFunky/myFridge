@@ -1,17 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteSavedRecipe } from "../../store/savedRecipes";
+import React from 'react';
 
 const SavedRecipeShow = ({ recipe }) => {
-    const dispatch = useDispatch();
-
-    // TODO: this needs to get refacoted so it would delete the recipe show when it gets deleted
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     dispatch(deleteSavedRecipe(recipe._id));
-    //     return [];
-    // };
-
     return (
         <div>
             <h2>{recipe.name}</h2>
@@ -27,7 +16,6 @@ const SavedRecipeShow = ({ recipe }) => {
                     <li key={index}>{instruction.description}</li>
                 ))}
             </ol>
-            {/* <button onClick={handleSubmit}>Delete Recipe</button> */}
         </div>
     );
 };

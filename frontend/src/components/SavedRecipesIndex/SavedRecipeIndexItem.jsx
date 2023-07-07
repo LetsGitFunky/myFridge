@@ -1,19 +1,9 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteSavedRecipe } from "../../store/savedRecipes";
+import React from 'react';
 
 const SavedRecipeIndexItem = ({ recipe, onRecipeSelect }) => {
-    const dispatch = useDispatch();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // console.log(recipe._id);
-        dispatch(deleteSavedRecipe(recipe._id));
-    };
     return (
         <div onClick={() => onRecipeSelect(recipe)}>
             <h2>{recipe.name}</h2>
-            <button onClick={handleSubmit}>Delete Recipe</button>
         </div>
     );
 };
