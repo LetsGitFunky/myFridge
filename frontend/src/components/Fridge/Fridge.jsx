@@ -34,6 +34,7 @@ export default function Fridge (userId) {
             } else {
                 dispatch(createIngredient(sessionUser, ""));    
             }
+            setIngredients("");
     };
 
     return (
