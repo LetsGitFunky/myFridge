@@ -9,7 +9,8 @@ function SignupForm () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-    const errors = useSelector(state => state.errors.session);
+    const errorsState = useSelector(state => state.errors.session);
+    const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -41,16 +42,39 @@ function SignupForm () {
     return e => setState(e.currentTarget.value);
     }
 
-    const handleSubmit = e => {
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    //     const user = {
+    //         email,
+    //         username,
+    //         password
+    //     };
+
+    //     dispatch(signup(user)); 
+    // }
+
+    const handleSubmit = (e) => {
+        // debugger
         e.preventDefault();
         const user = {
             email,
             username,
-            password
+            password,
         };
-
-        dispatch(signup(user)); 
-    }
+    
+        // Perform form validation
+        if (!email || !username || !password || password !== password2) {
+          // Update the errors state to show the validation errors
+            setErrors({
+                email: !email ? 'Email is required' : '',
+                username: !username ? 'Chef Name is required' : '',
+                password: !password ? 'Password is required' : '',
+                password2: password !== password2 ? 'Passwords must match' : '',
+            });
+        } else {
+            dispatch(signup(user));
+        }
+    };
 
     return (
         <div className='form-container'>
@@ -60,6 +84,9 @@ function SignupForm () {
                 </div>
                 <h2 id="signup-title-text">Sign up for myFridge </h2>
                 <p>Your quick and easy recipe generator!</p>
+                <div className="errors">{errorsState?.email}
+                    <br/>
+                </div>
                 <div className="errors">{errors?.email}</div>
                 <label id="signup-email">
                     <span>Email</span>
@@ -71,6 +98,7 @@ function SignupForm () {
                     />
                 </label>
                 <br/>
+                <div className="errors">{errorsState?.username}</div>
                 <div className="errors">{errors?.username}</div>
                 <label id="chef-name">
                     <span>Chef Name</span>
@@ -81,7 +109,7 @@ function SignupForm () {
                         placeholder="Your name"
                     />
                 </label>
-                <div className="errors">{errors?.password}</div>
+                <div className="errors">{errorsState?.password}</div>
                 <label>
                     <span>Password</span>
                     <br/>
@@ -107,7 +135,7 @@ function SignupForm () {
                 <input
                     type="submit"
                     value="Sign Up"
-                    disabled={!email || !username || !password || password !== password2}
+                    // disabled={!email || !username || !password || password !== password2}
                 />
             </form>
             <div className='signup-fridge-img-container'>
