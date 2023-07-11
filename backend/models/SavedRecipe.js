@@ -12,8 +12,8 @@ const savedRecipeSchema = new Schema(
             required: true,
         },
         note: {
-            type: Schema.Types.ObjectId,
-            ref: "Note",
+            type: String,
+            default: "",
         },
     },
     {
@@ -24,5 +24,3 @@ const savedRecipeSchema = new Schema(
 const SavedRecipe = mongoose.model("SavedRecipe", savedRecipeSchema);
 
 module.exports = SavedRecipe;
-
-

@@ -11,7 +11,7 @@ const validateRecipeInput = require("../../validations/recipes");
 router.get("/", requireUser, async (req, res) => {
     try {
         const savedRecipes = await SavedRecipe.find({ user: req.user._id }); // finding all recipes for logged-in user
-        
+
         // Convert array to object
         const savedRecipesObject = savedRecipes.reduce((obj, recipe) => {
             obj[recipe._id] = { ...recipe.recipe, _id: recipe._id }; // Copy all properties of recipe and add _id as a property
@@ -45,6 +45,7 @@ router.post("/", requireUser, validateRecipeInput, async (req, res, next) => {
         const newSavedRecipe = new SavedRecipe({
             user: req.user._id,
             recipe: req.body,
+            note: req.body.note
         });
 
         let savedRecipe = await newSavedRecipe.save();
@@ -66,5 +67,40 @@ router.delete("/", requireUser, async (req, res, next) => {
         next(err);
     }
 });
+
+// PATCH /api/savedRecipes/:id/note
+router.patch("/:id/note", requireUser, async (req, res, next) => {
+    try {
+        const savedRecipeId = req.params.id;
+        const newNote = req.body.note;
+
+        // Find the saved recipe by id and update its note field
+        const savedRecipe = await SavedRecipe.findByIdAndUpdate(savedRecipeId, { note: newNote }, { new: true });
+
+        if (!savedRecipe) {
+            return res.status(404).json({ message: "No saved recipe found with that id" });
+        }
+
+        return res.json(savedRecipe);
+    } catch (err) {
+        next(err);
+    }
+});
+
+
+// DELETE /api/savedRecipes/:id
+// router.delete("/:id", requireUser, async (req, res, next) => {
+//     try {
+//         const savedRecipeId = req.params.id;
+//         await SavedRecipe.findByIdAndDelete(savedRecipeId);
+//         res.json({ message: "Recipe deleted successfully!" });
+//     } catch (err) {
+//         next(err);
+//     }
+// });
+
+
+
+
 
 module.exports = router;
