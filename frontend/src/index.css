@@ -52,7 +52,7 @@ table {
 form > .errors {
     color: red;
     font-size: 0.875em;
-    height: 15px;
+    height: 10px;
     display: flex;
     align-items: center;
 }
