@@ -4,6 +4,17 @@ import jwtFetch from './jwt';
 export const RECEIVE_INGREDIENTS = "ingredients/RECEIVE_INGREDIENTS";
 export const RECEIVE_INGREDIENT = "ingredients/RECEIVE_INGREDIENT";
 export const REMOVE_INGREDIENT = 'ingredients/REMOVE_INGREDIENT';
+export const RECEIVE_INGREDIENT_ERRORS = "ingredients/RECEIVE_INGREDIENT_ERRORS";
+export const CLEAR_INGREDIENT_ERRORS = "ingredients/CLEAR_INGREDIENT_ERRORS";
+
+
+// error action creators
+
+const receiveErrors = errors => ({
+    type: RECEIVE_INGREDIENT_ERRORS,
+    errors
+});
+
 
 // action creators
 const receiveIngredients = (ingredients) => {
@@ -24,6 +35,8 @@ const removeIngredient = ingredientId => ({
     type: REMOVE_INGREDIENT,
     ingredientId
 });
+
+
 
 //getingredients and getingredient selector helper functions
 export const getIngredient = (ingredientId) => (state) => (
@@ -69,7 +82,8 @@ export const createIngredient = (user, ingredient) => async dispatch => {
         const data = await response.json();
         dispatch(receiveIngredients(data));
     } catch (err) {
-        dispatch({ type: 'CREATE_ingredients_FAILURE', payload: err.message });
+        const res = await err.json();
+        return dispatch(receiveErrors(res.errors));
     }
 };
 
@@ -104,3 +118,19 @@ export default function ingredientsReducer(state = [], action) {
             return state;
     }
 }
+
+
+const nullErrors = null;
+
+export const ingredientsErrorsReducer = (state = nullErrors, action) => {
+    switch(action.type) {
+        case RECEIVE_INGREDIENT_ERRORS:
+            return action.errors;
+        case RECEIVE_INGREDIENT:
+        case RECEIVE_INGREDIENTS:
+        case CLEAR_INGREDIENT_ERRORS:
+            return nullErrors;
+    default:
+        return state;
+    }
+};

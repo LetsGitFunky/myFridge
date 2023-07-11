@@ -6,6 +6,8 @@ import './Fridge.css'
 
 export default function Fridge (userId) {
     const sessionUser = useSelector(state => state.session.user);
+    const errors = useSelector(state => state.errors.ingredients);
+
     const [ingredients, setIngredients] = useState("")
     const dispatch = useDispatch();
     const ings = useSelector(state => state.ingredients) || [];
@@ -27,15 +29,11 @@ export default function Fridge (userId) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (eliminateDups(ingredients) !== false) {
-            try {
-                dispatch(createIngredient(sessionUser, ingredients));
-            } catch (error) {
-                console.error("Error saving ingredients:", error);
+            if (eliminateDups(ingredients) !== false) {
+                dispatch(createIngredient(sessionUser, ingredients));    
+            } else {
+                dispatch(createIngredient(sessionUser, ""));    
             }
-        } else {
-            console.log("no more then 1 ingredient of same type")
-        }
     };
 
     return (
@@ -51,6 +49,7 @@ export default function Fridge (userId) {
                         onChange={handleInputChange}
                     />
                     <button className="add-to-fridge-button" type="submit">Add to myFridge!</button>
+                    <div className="errors">{errors?.name}</div>
                 </form>
             </div>
         </div>
