@@ -3,12 +3,23 @@ import { useState, useEffect } from "react";
 import { createIngredient, fetchIngredients, getIngredients } from "../../store/ingredients";
 import { useDispatch, useSelector } from "react-redux";
 import './Fridge.css'
-// import { useParams } from 'react-router-dom';
 
 export default function Fridge (userId) {
     const sessionUser = useSelector(state => state.session.user);
     const [ingredients, setIngredients] = useState("")
     const dispatch = useDispatch();
+    const ings = useSelector(state => state.ingredients) || [];
+    
+    
+    const eliminateDups = (ing) => {
+        for (let i = 0; i < ings.length; i++) {
+            const ingredient = ings[i];
+            if (ingredient.name === ing) {
+                return false 
+            }
+        }
+        return true
+    }
 
     const handleInputChange = (e) => {
         setIngredients(e.target.value);
@@ -16,10 +27,14 @@ export default function Fridge (userId) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try {
-            dispatch(createIngredient(sessionUser, ingredients));
-        } catch (error) {
-            console.error("Error saving ingredients:", error);
+        if (eliminateDups(ingredients) !== false) {
+            try {
+                dispatch(createIngredient(sessionUser, ingredients));
+            } catch (error) {
+                console.error("Error saving ingredients:", error);
+            }
+        } else {
+            console.log("no more then 1 ingredient of same type")
         }
     };
 
