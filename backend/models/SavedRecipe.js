@@ -10,11 +10,15 @@ const savedRecipeSchema = new Schema(
         recipe: {
             type: Object,
             required: true,
+            note: {
+                type: String,
+                default: "",
+            }
         },
-        note: {
-            type: String,
-            default: "",
-        },
+        // note: {
+        //     type: String,
+        //     default: "",
+        // },
     },
     {
         timestamps: true,

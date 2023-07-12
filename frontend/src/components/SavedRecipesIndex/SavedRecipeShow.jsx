@@ -15,7 +15,9 @@ const SavedRecipeShow = ({ recipe }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        debugger
         dispatch(updateSavedRecipeNote(recipe._id, note));
+        
     };
 
     return (
@@ -37,11 +39,12 @@ const SavedRecipeShow = ({ recipe }) => {
             <form onSubmit={handleSubmit}>
                 <textarea
                     className="note"
-                    value={note}
+                    value={recipe.note}
                     onChange={(e) => setNote(e.target.value)}
                 />
                 <button type="submit">Save Note</button>
             </form>
+            <li>{recipe.note}</li>
         </div>
     );
 };

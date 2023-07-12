@@ -70,18 +70,26 @@ router.delete("/", requireUser, async (req, res, next) => {
 
 // PATCH /api/savedRecipes/:id/note
 router.patch("/:id/note", requireUser, async (req, res, next) => {
+    console.log("id", req.params.id)
+    console.log("note", req.body.note)
     try {
         const savedRecipeId = req.params.id;
+        const fetchedRecipe = await SavedRecipe.findById(savedRecipeId)
         const newNote = req.body.note;
+        const newRecipe = {...fetchedRecipe._doc}
+        console.log("newRecipe", newRecipe)
+        newRecipe.recipe.note = newNote
 
         // Find the saved recipe by id and update its note field
-        const savedRecipe = await SavedRecipe.findByIdAndUpdate(savedRecipeId, { note: newNote }, { new: true });
+        const savedRecipe = await SavedRecipe.findByIdAndUpdate(savedRecipeId, newRecipe, { new: true });
 
         if (!savedRecipe) {
             return res.status(404).json({ message: "No saved recipe found with that id" });
         }
-
-        return res.json(savedRecipe);
+        const response = res.json(savedRecipe)
+        console.log(response)
+        // return res.json(savedRecipe);
+        return response;
     } catch (err) {
         next(err);
     }
