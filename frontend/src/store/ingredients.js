@@ -87,16 +87,33 @@ export const createIngredient = (user, ingredient) => async dispatch => {
     }
 };
 
-export const deleteIngredient = ingredientId => async (dispatch) => {
-    const response = await jwtFetch (`/api/ingredients/${ingredientId}`, {
-        method: 'DELETE'
-    });
+// export const deleteIngredient = ingredientId => async (dispatch) => {
+//     const response = await jwtFetch (`/api/ingredients/${ingredientId}`, {
+//         method: 'DELETE'
+//     });
 
-    if (response.ok) {
-        dispatch(removeIngredient(ingredientId));
+//     if (response.ok) {
+//         dispatch(removeIngredient(ingredientId));
+//     }
+// };
+
+export const deleteIngredient = ingredientId => async (dispatch) => {
+    try {
+        const res = await jwtFetch(`/api/ingredients/${ingredientId}`, {
+            method: 'DELETE'
+        });
+
+        if (res.ok) {
+            dispatch(removeIngredient(ingredientId));
+        } else {
+            // Handle non-2xx HTTP responses here
+            console.error(`Failed to delete ingredient: ${ingredientId}`);
+        }
+    } catch (error) {
+        // Handle network errors or other exceptions here
+        console.error(`An error occurred while deleting ingredient: ${ingredientId}`, error);
     }
 };
-
 
 //ingredient Reducer
 export default function ingredientsReducer(state = [], action) {
