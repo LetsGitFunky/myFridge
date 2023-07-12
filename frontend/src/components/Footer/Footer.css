@@ -6,11 +6,11 @@
     /* margin-top: 5px; */
     margin-bottom: 20px;
     font-size: 1.3rem;
-    cursor: pointer;
 }
 
 .footer-text {
     margin-right: 10px; 
+    cursor: default;
 }
 
 .icon-link {
