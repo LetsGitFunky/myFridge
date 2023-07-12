@@ -1,0 +1,67 @@
+
+.about-me-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    background-color: lightblue;
+    margin-bottom: 20px;
+}
+
+.team-image-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.team-links {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
+    margin-bottom: 20px;
+}
+
+.about-item {
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #dafaef;
+    border-radius: 10px;
+    background-color: #dafaef;
+}
+
+.text-box {
+    text-align: center;
+}
+
+.text-box h3 {
+    font-size: 1.2rem;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.linkedin-icon {
+    margin-left: 5px;
+    font-size: 2rem;
+    transition: color 0.1s ease-in-out;
+    z-index: 9000;
+}
+
+.linkedin-icon:hover {
+    color: #0077B5; /* Change the color on hover to the desired color */
+}
