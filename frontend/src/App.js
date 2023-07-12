@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
+import { Route } from 'react-router-dom/cjs/react-router-dom.min';
 import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage';
@@ -15,6 +16,7 @@ import GeneratedRecipes from './components/GeneratedRecipes/GeneratedRecipes';
 import SavedRecipesIndex from './components/SavedRecipesIndex/SavedRecipesIndex';
 import { getCurrentUser } from './store/session';
 import Footer from './components/Footer/Footer';
+import About from './components/About/About';
 
 
 
@@ -30,6 +32,7 @@ function App() {
     <>
       <NavBar />
       <Switch>
+        <Route exact path="/about" component={About} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
 

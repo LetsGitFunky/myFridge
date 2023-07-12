@@ -22,6 +22,7 @@ function NavBar () {
         if (loggedIn) {
             return (
                 <div className="links-nav">
+                    <NavLink className="nav-button" exact to={'/about'}>About</NavLink>
                     <NavLink className="nav-button" exact to={'/'}>myFridge</NavLink>
                     <NavLink className="nav-button" exact to={'/saved'}>Saved Recipes</NavLink>
 
@@ -31,6 +32,7 @@ function NavBar () {
         } else {
             return (
                 <div className="links-auth">
+                    <NavLink className="nav-button" exact to={'/about'}>About</NavLink>
                     <NavLink className="nav-button" exact to={'/signup'}>Signup</NavLink>
                     <NavLink className="nav-button" exact to={'/login'}>Login</NavLink>
                 </div>
