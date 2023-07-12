@@ -10,21 +10,27 @@ const PostIt = ({ recipe }) => {
         setNote(recipe.note || "");
     }, [recipe]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleBlur = () => {
         dispatch(updateSavedRecipeNote(recipe._id, note));
     };
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     dispatch(updateSavedRecipeNote(recipe._id, note));
+    // };
+
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}> */}
                 <textarea
                     className="note"
                     value={note}
+                    placeholder={"...leave a note"}
                     onChange={(e) => setNote(e.target.value)}
+                    onBlur={handleBlur}
                 />
-                <button type="submit">Save Note</button>
-            </form>
+                {/* <button type="submit">Save Note</button> */}
+            {/* </form> */}
         </div>
     );
 };
