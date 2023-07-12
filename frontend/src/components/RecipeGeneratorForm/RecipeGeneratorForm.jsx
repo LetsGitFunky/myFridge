@@ -4,13 +4,14 @@ import { useDispatch } from "react-redux";
 import { fetchRecipes } from "../../store/recipes";
 // import { Redirect } from 'react-router-dom'; // for GeneratedRecipes
 import "./RecipeGeneratorForm.css";
-import { FaVolumeMute } from "react-icons/fa";
+import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import song from "./audio/myFridge.wav";
 
 const RecipeGeneratorForm = () => {
     // Store ingredients entered in the form
     const [ingredients, setIngredients] = useState("");
     const [audioPlaying, setAudioPlaying] = useState(false);
+    const [audioEnabled, setAudioEnabled] = useState(true);
     const dispatch = useDispatch();
     let audio = new Audio(song);
     const audioRef = useRef(new Audio(song));
@@ -28,17 +29,28 @@ const RecipeGeneratorForm = () => {
             dispatch(fetchRecipes(ingredients)).catch((error) =>
                 console.error("Error generating recipe:", error)
             );
-            setAudioPlaying(true);
-            audioRef.current.play();
+            if (audioEnabled && !audioPlaying) {
+                setAudioPlaying(true);
+                audioRef.current.play();
+            }
         } catch (error) {
             console.error("Error generating recipe:", error);
         }
     };
 
-    const handleStopAudio = () => {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-        setAudioPlaying(false);
+    const handleToggleAudio = () => {
+        if (audioEnabled) {
+            // Audio is currently enabled, so disable it
+            setAudioEnabled(false);
+            if (audioPlaying) {
+                audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+                setAudioPlaying(false);
+            }
+        } else {
+            // Audio is currently disabled, so enable it
+            setAudioEnabled(true);
+        }
     };
 
     return (
@@ -58,11 +70,9 @@ const RecipeGeneratorForm = () => {
                 <button type="submit">Generate Recipes</button>
             </form>
             <br />
-            {audioPlaying && (
-                <button onClick={handleStopAudio}>
-                    <FaVolumeMute />
-                </button>
-            )}
+            <button onClick={handleToggleAudio}>
+                {audioEnabled ? <FaVolumeMute /> : <FaVolumeUp />}
+            </button>
         </div>
     );
 };
