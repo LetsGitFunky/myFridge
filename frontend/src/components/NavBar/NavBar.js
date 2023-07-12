@@ -10,7 +10,7 @@ import cheficon from './Images/cheficon.png'
 function NavBar () {
     const loggedIn = useSelector(state => !!state.session.user);
     const dispatch = useDispatch();
-    
+
 
 
     const logoutUser = e => {
@@ -43,8 +43,10 @@ function NavBar () {
     return (
         <div className="navbar">
             <div className="left-section">
-                <h1 id="myfridge-text">myFridge</h1>
-                <img className="chef-icon" src={cheficon} alt="Chef Icon" />
+                <NavLink exact to={'/'}>
+                    <h1 id="myfridge-text">myFridge</h1>
+                </NavLink>
+                    <img className="chef-icon" src={cheficon} alt="Chef Icon" />
                 <span id="tagline-nav">Your quick and easy recipe generator!</span>
             </div>
             <div className="right-section">
