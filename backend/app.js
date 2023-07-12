@@ -19,7 +19,6 @@ const csrfRouter = require('./routes/api/csrf');
 const recipeRoutes = require('./routes/api/recipes') // added for recipe/generate testing
 const ingredientRouter = require('./routes/api/ingredients') // for ingredients
 const savedRecipes = require('./routes/api/savedRecipes') // for saveRecipes
-const notes = require('./routes/api/notes') // for notes
 
 
 
@@ -56,7 +55,6 @@ app.use('/api/csrf', csrfRouter);
 app.use('/api/recipes', recipeRoutes);
 app.use('/api/ingredients', ingredientRouter)
 app.use('/api/savedRecipes', savedRecipes)
-app.use('/api/notes', notes)
 
 // Serve static React build files statically in production
 if (isProduction) {

@@ -14,8 +14,9 @@ export const recieveSavedRecipes = (recipes) => {
 
 // one saved recipe
 export const recieveSavedRecipe = (recipe) => {
+    // debugger
     return {
-        type: recieveSavedRecipe,
+        type: RECIEVE_SAVED_RECIPE,
         recipe: recipe,
     };
 };
@@ -76,6 +77,22 @@ export const deleteSavedRecipe = (savedRecipeId) => async (dispatch) => {
     }
 };
 
+export const updateSavedRecipeNote = (savedRecipeId, note) => async (dispatch) => {
+    // debugger
+    const response = await jwtFetch(`/api/savedRecipes/${savedRecipeId}/note`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ note })
+    })
+
+    if (response.ok) {
+        const savedRecipe = await response.json();
+        dispatch(recieveSavedRecipe(savedRecipe));
+    }
+}
+
 // SAVED RECIPE REDUCER
 const savedRecipeReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -87,7 +104,13 @@ const savedRecipeReducer = (state = {}, action) => {
         case RECIEVE_SAVED_RECIPE:
             // newstate = {...state}
             // return {...
-            return state;
+            // debugger
+            return {
+                ...state,
+
+                [action.recipe._id]: {...state[action.recipe._id], ...action.recipe.recipe},
+                // action.recipe
+            };
         case REMOVE_SAVED_RECIPE:
             // TODO: check state or comment out
             newstate = { ...state };
