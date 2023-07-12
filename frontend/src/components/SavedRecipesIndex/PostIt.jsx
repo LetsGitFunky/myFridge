@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateSavedRecipeNote } from '../../store/savedRecipes';
+import './PostIt.css'
 
 const PostIt = ({ recipe }) => {
     const [note, setNote] = useState(recipe.note);

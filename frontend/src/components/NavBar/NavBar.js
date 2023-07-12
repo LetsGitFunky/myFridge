@@ -43,7 +43,7 @@ function NavBar () {
     return (
         <div className="navbar">
             <div className="left-section">
-                <h1 id="myfridge-text">myFridge</h1>
+            <a href="/" id="myfridge-text">myFridge</a>
                 <img className="chef-icon" src={cheficon} alt="Chef Icon" />
                 <span id="tagline-nav">Your quick and easy recipe generator!</span>
             </div>
