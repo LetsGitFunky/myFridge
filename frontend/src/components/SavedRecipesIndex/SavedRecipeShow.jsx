@@ -11,7 +11,7 @@ const SavedRecipeShow = ({ recipe }) => {
         setNote(recipe.note);
     }, [recipe]);
 
-    console.log(note)
+    // console.log(note)
 
     const handleSubmit = (e) => {
         e.preventDefault();

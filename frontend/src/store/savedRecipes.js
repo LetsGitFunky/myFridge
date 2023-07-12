@@ -14,6 +14,7 @@ export const recieveSavedRecipes = (recipes) => {
 
 // one saved recipe
 export const recieveSavedRecipe = (recipe) => {
+    debugger
     return {
         type: recieveSavedRecipe,
         recipe: recipe,
@@ -100,8 +101,9 @@ const savedRecipeReducer = (state = {}, action) => {
         case RECIEVE_SAVED_RECIPES:
             return action.recipes;
         case RECIEVE_SAVED_RECIPE:
-            // newstate = {...state}
+            newstate = {...state}
             // return {...
+            debugger
             return {
                 ...state,
                 [action.recipe._id]: action.recipe,

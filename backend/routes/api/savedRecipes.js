@@ -14,7 +14,7 @@ router.get("/", requireUser, async (req, res) => {
 
         // Convert array to object
         const savedRecipesObject = savedRecipes.reduce((obj, recipe) => {
-            obj[recipe._id] = { ...recipe.recipe, _id: recipe._id }; // Copy all properties of recipe and add _id as a property
+            obj[recipe._id] = { ...recipe.recipe, _id: recipe._id }; // Copy all properties of recipe and add _id as a property |||||| try note: recipe.note
             return obj;
         }, {});
 
