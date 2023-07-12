@@ -14,7 +14,7 @@ export const recieveSavedRecipes = (recipes) => {
 
 // one saved recipe
 export const recieveSavedRecipe = (recipe) => {
-    debugger
+    // debugger
     return {
         type: RECIEVE_SAVED_RECIPE,
         recipe: recipe,
@@ -78,7 +78,7 @@ export const deleteSavedRecipe = (savedRecipeId) => async (dispatch) => {
 };
 
 export const updateSavedRecipeNote = (savedRecipeId, note) => async (dispatch) => {
-    debugger
+    // debugger
     const response = await jwtFetch(`/api/savedRecipes/${savedRecipeId}/note`, {
         method: 'PATCH',
         headers: {
@@ -104,7 +104,7 @@ const savedRecipeReducer = (state = {}, action) => {
         case RECIEVE_SAVED_RECIPE:
             // newstate = {...state}
             // return {...
-            debugger
+            // debugger
             return {
                 ...state,
 

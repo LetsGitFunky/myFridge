@@ -70,14 +70,14 @@ router.delete("/", requireUser, async (req, res, next) => {
 
 // PATCH /api/savedRecipes/:id/note
 router.patch("/:id/note", requireUser, async (req, res, next) => {
-    console.log("id", req.params.id)
-    console.log("note", req.body.note)
+    // console.log("id", req.params.id)
+    // console.log("note", req.body.note)
     try {
         const savedRecipeId = req.params.id;
         const fetchedRecipe = await SavedRecipe.findById(savedRecipeId)
         const newNote = req.body.note;
         const newRecipe = {...fetchedRecipe._doc}
-        console.log("newRecipe", newRecipe)
+        // console.log("newRecipe", newRecipe)
         newRecipe.recipe.note = newNote
 
         // Find the saved recipe by id and update its note field
@@ -87,7 +87,7 @@ router.patch("/:id/note", requireUser, async (req, res, next) => {
             return res.status(404).json({ message: "No saved recipe found with that id" });
         }
         const response = res.json(savedRecipe)
-        console.log(response)
+        // console.log(response)
         // return res.json(savedRecipe);
         return response;
     } catch (err) {
