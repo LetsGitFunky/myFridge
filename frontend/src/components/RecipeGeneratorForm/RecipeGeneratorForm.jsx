@@ -12,6 +12,8 @@ const RecipeGeneratorForm = () => {
     const [ingredients, setIngredients] = useState("");
     const [audioPlaying, setAudioPlaying] = useState(false);
     const [audioEnabled, setAudioEnabled] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+
     const dispatch = useDispatch();
     let audio = new Audio(song);
     const audioRef = useRef(new Audio(song));
@@ -24,6 +26,11 @@ const RecipeGeneratorForm = () => {
     // When form is submitted, it calls generateRecipe function with entered ingredients
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 12000);
 
         try {
             dispatch(fetchRecipes(ingredients)).catch((error) =>
@@ -67,7 +74,9 @@ const RecipeGeneratorForm = () => {
                     placeholder="eggs, chicken, potatoes, garlic..."
                     onChange={handleInputChange}
                 />
-                <button type="submit">Generate Recipes</button>
+                <button type="submit" disabled={isLoading}>
+                    {isLoading ? 'Generating Recipes....' : 'Generate Recipes'}
+                </button>
             </form>
             <br />
             <button onClick={handleToggleAudio}>
