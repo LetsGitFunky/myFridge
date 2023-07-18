@@ -26,7 +26,7 @@ function LoginForm () {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login({ email, password })); 
+        dispatch(login({ email, password }));
     }
 
     const handleLoginDemo = (e) => {
@@ -34,11 +34,11 @@ function LoginForm () {
 
         const demoEmail = 'demo@user.io';
         const demoPassword = 'password';
-        
+
         setEmail(demoEmail);
         setPassword(demoPassword);
         dispatch(login({ email: demoEmail, password: demoPassword }));
-        
+
     }
 
     return (
@@ -75,7 +75,6 @@ function LoginForm () {
                     <input
                         type="submit"
                         value="Log In"
-                        disabled={!email || !password}
                     />
                 </div>
             </form>
