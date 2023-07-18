@@ -11,13 +11,13 @@ export default function Fridge (userId) {
     const [ingredients, setIngredients] = useState("")
     const dispatch = useDispatch();
     const ings = useSelector(state => state.ingredients) || [];
-    
-    
+
+
     const eliminateDups = (ing) => {
         for (let i = 0; i < ings.length; i++) {
             const ingredient = ings[i];
-            if (ingredient.name === ing) {
-                return false 
+            if (ingredient.name.toLowerCase() === ing.toLowerCase()) {
+                return false
             }
         }
         return true
@@ -29,10 +29,11 @@ export default function Fridge (userId) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const lowerCaseIngredients = ingredients.toLowerCase();
             if (eliminateDups(ingredients) !== false) {
-                dispatch(createIngredient(sessionUser, ingredients));    
+                dispatch(createIngredient(sessionUser, lowerCaseIngredients));
             } else {
-                dispatch(createIngredient(sessionUser, ""));    
+                dispatch(createIngredient(sessionUser, ""));
             }
             setIngredients("");
     };
