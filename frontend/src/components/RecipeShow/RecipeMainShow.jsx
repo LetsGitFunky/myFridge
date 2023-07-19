@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import StepItem from "./StepItem";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe } from "../../store/savedRecipes";
@@ -10,24 +10,24 @@ export default function RecipeMainShow({ recipe }) {
     const currentUser = useSelector((state) => state.session.user);
     const [isSaved, setSaved] = useState(false);
 
+    useEffect(() => {
+        setSaved(false);
+    }, [recipe]);
+
 
     const handleClick = (e) => {
         e.preventDefault();
-
-        // console.log(currentUser)
 
         const savedRecipe = {
             user: currentUser._id,
 
             ...recipe,
         };
-        // debugger;
-        // think i need to add user to this object
         dispatch(createRecipe(savedRecipe));
         setSaved(true);
     };
 
-    
+
     return (
         <div className="recipe-main-show-wrapper">
             <ul className="recipe-main-steps">
