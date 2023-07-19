@@ -40,20 +40,43 @@ router.post("/", requireUser, validateIngredient, async (req, res) => {
     }
 });
 
+// router.delete("/:id", requireUser, async (req, res) => {
+//     try {
+//         const user = await User.findById(req.user._id);
+//         const ingredientId = req.params.id;
+
+//         user.fridge = user.fridge.filter(
+//             (ingId) => ingId.toString() !== ingredientId
+//         );
+//         await user.save();
+
+//         const ingredient = await Ingredient.findByIdAndRemove(ingredientId);
+//         return res.json(user.fridge);
+//     } catch (err) {
+//         res.status(500).json({ message: "Server error" });
+//     }
+// });
+
 router.delete("/:id", requireUser, async (req, res) => {
     try {
-        const user = await User.findById(req.user._id);
         const ingredientId = req.params.id;
 
-        user.fridge = user.fridge.filter(
-            (ingId) => ingId.toString() !== ingredientId
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+            { $pull: { fridge: ingredientId } },
+            { new: true, useFindAndModify: false }
         );
-        await user.save();
 
-        const ingredient = await Ingredient.findByIdAndRemove(ingredientId);
+        const ingredient = await Ingredient.findById(ingredientId);
+        if (!ingredient) {
+            return res.status(404).json({ message: "Ingredient not found" });
+        }
+        await Ingredient.findByIdAndRemove(ingredientId);
+
         return res.json(user.fridge);
     } catch (err) {
-        res.status(500).json({ message: "Server error" });
+        console.error(err);
+        res.status(500).json({ message: "Server error", error: err.message });
     }
 });
 
