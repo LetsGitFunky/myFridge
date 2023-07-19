@@ -12,6 +12,7 @@ export default function IngredientsIndex() {
     const ings = useSelector((state) => state.ingredients) || [];
     const [selectedIngredients, setSelectedIngredients] = useState([]);
     const [selectedIngredientNames, setSelectedIngredientNames] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         dispatch(fetchIngredients(sessionUser._id));
@@ -40,6 +41,12 @@ export default function IngredientsIndex() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 10000);
+
         // Convert the array of ingredient names to a string
         const ingredientsString = selectedIngredientNames.join(", ");
         dispatch(fetchRecipes(ingredientsString));
@@ -69,8 +76,8 @@ export default function IngredientsIndex() {
                             <label>{ingredient.name}</label>
                         </div>
                     ))}
-                <button id="generate-recipes-button" type="submit">
-                    Generate Recipes
+                <button id="generate-recipes-button" type="submit" disabled={isLoading}>
+                    {isLoading ? 'Generating Recipes....' : 'Generate Recipes'}
                 </button>
                 <button id="delete-ingredients-button" onClick={handleDelete}>
                     Remove from Fridge

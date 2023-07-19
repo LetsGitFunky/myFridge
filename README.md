@@ -11,7 +11,6 @@ myFridge comes with 5 core features:
 
 1. Hosting on Render.com
     - Visit [myFridge](https://myfridge-tkk4.onrender.com/) for a live demo
-     ![Hosting pic](mern_pics/Hosting.png)
 
 
 2. User Authentication & Demo User Account
