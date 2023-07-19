@@ -54,10 +54,23 @@ export default function IngredientsIndex() {
 
     const handleDelete = (event) => {
         event.preventDefault();
-        // Call deleteIngredient here with each selected ingredient's _id as parameter
-        for (const ingredientId of selectedIngredients) {
-            dispatch(deleteIngredient(ingredientId));
-        }
+
+        const deletePromises = selectedIngredients.map((ingredientId) =>
+            dispatch(deleteIngredient(ingredientId))
+        );
+
+        // This will wait for all delete operations to complete
+        Promise.all(deletePromises)
+            .then(() => {
+                // After all ingredients have been deleted, reset selectedIngredients and selectedIngredientNames
+                setSelectedIngredients([]);
+                setSelectedIngredientNames([]);
+
+                // dispatch(fetchIngredients(sessionUser._id));
+            })
+            .catch(err => {
+                console.error("An error occurred while deleting ingredients:", err);
+            });
     };
 
     return (
